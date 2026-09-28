@@ -74,7 +74,8 @@ export const Disabled: Story = {
   play: async ({ args, canvas, userEvent }) => {
     const button = canvas.getByRole('button');
     await expect(button).toBeDisabled();
-    await userEvent.click(button, { pointerEventsCheck: 0 });
+    // The play-context userEvent is already a setup() instance: options go through .setup().
+    await userEvent.setup({ pointerEventsCheck: 0 }).click(button);
     await expect(args.onClick).not.toHaveBeenCalled();
   },
 };
