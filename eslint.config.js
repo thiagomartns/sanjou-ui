@@ -6,7 +6,13 @@ import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['**/node_modules/**', '**/.next/**', '**/storybook-static/**', '**/public/r/**', '**/next-env.d.ts'],
+    ignores: [
+      '**/node_modules/**',
+      '**/.next/**',
+      '**/storybook-static/**',
+      '**/public/r/**',
+      '**/next-env.d.ts',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

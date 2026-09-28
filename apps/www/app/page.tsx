@@ -49,7 +49,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section id="install" className="grid gap-4 scroll-mt-20">
+      <section id="install" className="grid scroll-mt-20 gap-4">
         <h2 className="text-2xl font-semibold">Install</h2>
         <ol className="grid list-decimal gap-4 pl-5 text-sm">
           <li className="grid gap-2">
@@ -78,7 +78,7 @@ export default function Home() {
         </ol>
       </section>
 
-      <section id="components" className="grid gap-12 pt-16 scroll-mt-20">
+      <section id="components" className="grid scroll-mt-20 gap-12 pt-16">
         <h2 className="text-2xl font-semibold">Components</h2>
 
         <Preview

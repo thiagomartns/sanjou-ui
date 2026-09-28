@@ -14,7 +14,7 @@ export function Preview({
   children: ReactNode;
 }) {
   return (
-    <section id={name} className="grid gap-3 scroll-mt-20">
+    <section id={name} className="grid scroll-mt-20 gap-3">
       <div className="grid gap-1">
         <h3 className="text-lg font-semibold">{title}</h3>
         <p className="text-sm text-muted-foreground">{description}</p>

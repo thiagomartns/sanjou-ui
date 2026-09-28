@@ -40,13 +40,13 @@ pnpm lint && pnpm typecheck
 
 ## Commands
 
-| Command | What it does |
-|---|---|
-| `pnpm tokens` | Regenerates CSS, DTCG JSON, Figma files, contrast report and the registry `theme` item |
-| `pnpm tokens:check` | Fails if generated files are stale or any contrast rule fails (CI) |
-| `pnpm registry:build` | `shadcn build` → `apps/www/public/r/*.json` |
-| `pnpm build` | Tokens → registry → Next.js build |
-| `pnpm changeset` / `pnpm release` | Version and publish `@sanjou/tokens` to npm |
+| Command                           | What it does                                                                           |
+| --------------------------------- | -------------------------------------------------------------------------------------- |
+| `pnpm tokens`                     | Regenerates CSS, DTCG JSON, Figma files, contrast report and the registry `theme` item |
+| `pnpm tokens:check`               | Fails if generated files are stale or any contrast rule fails (CI)                     |
+| `pnpm registry:build`             | `shadcn build` → `apps/www/public/r/*.json`                                            |
+| `pnpm build`                      | Tokens → registry → Next.js build                                                      |
+| `pnpm changeset` / `pnpm release` | Version and publish `@sanjou/tokens` to npm                                            |
 
 ## Using the registry in another project
 
@@ -54,8 +54,8 @@ pnpm lint && pnpm typecheck
 // components.json
 {
   "registries": {
-    "@sanjou": "https://sanjou-ui.vercel.app/r/{name}.json"
-  }
+    "@sanjou": "https://sanjou-ui.vercel.app/r/{name}.json",
+  },
 }
 ```
 
