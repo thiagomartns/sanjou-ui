@@ -4,3 +4,8 @@ packages:
 onlyBuiltDependencies:
   - esbuild
   - sharp
+# msw's postinstall only copies its service worker when package.json has
+# `msw.workerDirectory`; we don't use MSW directly (it is a transitive peer
+# of Storybook/Vitest), so its script is intentionally not run.
+ignoredBuiltDependencies:
+  - msw
