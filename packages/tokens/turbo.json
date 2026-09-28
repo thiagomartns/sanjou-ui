@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [
+        "sanjou.css",
+        "tokens.json",
+        "CONTRAST.md",
+        "figma/**",
+        "$TURBO_ROOT$/apps/www/registry.json"
+      ]
+    }
+  }
+}
