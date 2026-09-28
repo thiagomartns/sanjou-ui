@@ -1,0 +1,21 @@
+{
+  "name": "@sanjou/tokens",
+  "version": "0.1.0",
+  "description": "Sanjou UI design tokens: Tailwind CSS 4 theme (OKLCH, light + dark), W3C DTCG JSON and Figma variables.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "files": ["sanjou.css", "tokens.json", "figma", "CONTRAST.md"],
+  "exports": {
+    "./sanjou.css": "./sanjou.css",
+    "./tokens.json": "./tokens.json",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test test/tokens.test.mjs"
+  },
+  "keywords": ["design-tokens", "tailwindcss", "oklch", "shadcn", "design-system"],
+  "publishConfig": { "access": "public" }
+}

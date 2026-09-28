@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import '@sanjou/tokens/sanjou.css';
+
+@source '../registry';
+@source '../components';
+@source '../stories';

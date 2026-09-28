@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+**/public/r/**
+**/.next/**
+**/storybook-static/**
+packages/tokens/sanjou.css
+packages/tokens/tokens.json
+packages/tokens/figma/**
+packages/tokens/CONTRAST.md
+apps/www/registry.json
