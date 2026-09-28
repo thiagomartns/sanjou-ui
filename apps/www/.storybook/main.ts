@@ -21,6 +21,14 @@ const config: StorybookConfig = {
     const { default: react } = await import('@vitejs/plugin-react');
     return mergeConfig(viteConfig, {
       plugins: [react(), tailwindcss()],
+      // addon-docs asks Vite to pre-bundle `@mdx-js/react`, but with pnpm's isolated
+      // node_modules it only resolves from inside addon-docs. Without the nested form
+      // Vite discovers it at runtime, re-optimizes and reloads mid-render, which broke
+      // the first Docs page opened on a cold cache (two copies of React). Same for
+      // addon-themes, which the dependency scanner only found at runtime.
+      optimizeDeps: {
+        include: ['@storybook/addon-docs > @mdx-js/react', '@storybook/addon-themes'],
+      },
       resolve: { alias: { '@': path.resolve(dirname, '..') } },
     });
   },
