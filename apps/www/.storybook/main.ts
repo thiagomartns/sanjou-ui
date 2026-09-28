@@ -6,7 +6,7 @@ import { mergeConfig } from 'vite';
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(ts|tsx)'],
+  stories: ['../stories/**/*.stories.@(ts|tsx)'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
@@ -16,8 +16,11 @@ const config: StorybookConfig = {
   framework: { name: '@storybook/react-vite', options: {} },
   async viteFinal(viteConfig) {
     const { default: tailwindcss } = await import('@tailwindcss/vite');
+    // @storybook/react-vite does not add the React plugin itself; without a
+    // vite.config (this is a Next.js app) JSX would compile to React.createElement.
+    const { default: react } = await import('@vitejs/plugin-react');
     return mergeConfig(viteConfig, {
-      plugins: [tailwindcss()],
+      plugins: [react(), tailwindcss()],
       resolve: { alias: { '@': path.resolve(dirname, '..') } },
     });
   },
