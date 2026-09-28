@@ -21,13 +21,15 @@ function CardHeader({ className, ...props }: ComponentProps<'div'>) {
   );
 }
 
-function CardTitle({ className, ...props }: ComponentProps<'h3'>) {
+function CardTitle({ className, children, ...props }: ComponentProps<'h3'>) {
   return (
     <h3
       data-slot="card-title"
       className={cn('text-[1rem] leading-6 font-semibold tracking-[-0.01em]', className)}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   );
 }
 
