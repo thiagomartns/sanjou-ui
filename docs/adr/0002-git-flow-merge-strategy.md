@@ -6,17 +6,17 @@
 
 ## Contexto
 
-O repositório já usa git flow (`main` lançada, `develop` de integração, `feature/*`, `fix/*`, `refactor/*`, `hotfix/*`; ver `CLAUDE.md`). O versionamento passa a ser derivado dos commits na `main` ([0003](0003-release-please-conventional-commits.md)), então o método de merge decide quais commits chegam lá e com que mensagem.
+O repositório já usa git flow (`main` lançada, `develop` de integração, `feature/*`, `fix/*`, `refactor/*`, `chore/*`, `docs/*`, `hotfix/*`; ver `CLAUDE.md`). O versionamento passa a ser derivado dos commits na `main` ([0003](0003-release-please-conventional-commits.md)), então o método de merge decide quais commits chegam lá e com que mensagem.
 
 ## Decisão
 
-| PR                                             | Método                                                      |
-| ---------------------------------------------- | ----------------------------------------------------------- |
-| `feature/*`, `fix/*`, `refactor/*` → `develop` | Squash, com o título do PR validado em Conventional Commits |
-| `develop` → `main` (promoção)                  | Merge commit                                                |
-| Release PR → `main`                            | Squash                                                      |
-| `hotfix/*` → `main`                            | Squash, título `fix: ...`                                   |
-| `main` → `develop` (back-merge)                | Merge commit, nunca squash                                  |
+| PR                                                                  | Método                                                      |
+| ------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `feature/*`, `fix/*`, `refactor/*`, `chore/*`, `docs/*` → `develop` | Squash, com o título do PR validado em Conventional Commits |
+| `develop` → `main` (promoção)                                       | Merge commit                                                |
+| Release PR → `main`                                                 | Squash                                                      |
+| `hotfix/*` → `main`                                                 | Squash, título `fix: ...`                                   |
+| `main` → `develop` (back-merge)                                     | Merge commit, nunca squash                                  |
 
 Só o título do PR é validado; não há commitlint/husky por commit.
 

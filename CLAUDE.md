@@ -29,7 +29,7 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 ## Branches (git flow)
 
 - `main` holds released code; never commit to it directly.
-- `develop` is the integration branch. `feature/*`, `fix/*` and `refactor/*` branch off `develop` and return through a PR.
+- `develop` is the integration branch. `feature/*`, `fix/*`, `refactor/*`, `chore/*` and `docs/*` branch off `develop` and return through a PR.
 - Releases go `develop` → `main` through a PR.
 - `hotfix/*` branches off `main` and is merged into both `main` and `develop`.
 
