@@ -29,7 +29,7 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 ## Branches (git flow)
 
 - `main` holds released code; never commit to it directly.
-- `develop` is the integration branch. `feature/*`, `fix/*` and `refactor/*` branch off `develop` and return through a PR.
+- `develop` is the integration branch. `feature/*`, `fix/*`, `refactor/*`, `chore/*` and `docs/*` branch off `develop` and return through a PR.
 - Releases go `develop` → `main` through a PR.
 - `hotfix/*` branches off `main` and is merged into both `main` and `develop`.
 
@@ -41,3 +41,11 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 ## Voice
 
 UI copy in English, sentence case, buttons start with a verb, no emoji. See the README of the Sanjou UI design system page for the full brand book.
+
+## Docs and AI artifacts
+
+- Plans, run reports, diagnostics and session drafts go in `.ai/` (git-ignored). Never commit them.
+- When making an architecture or tooling decision (library choice, pattern, workflow), propose an ADR in `docs/adr/` using `docs/adr/0000-template.md` and add it to the index in `docs/adr/README.md`.
+- When changing behavior described in README/CONTRIBUTING, update that doc in the same PR.
+- Deliver task reports in the conversation or in the PR description, not as a versioned file.
+- Rationale: [ADR 0001](docs/adr/0001-adrs-and-ai-artifacts-outside-git.md). `CONTRIBUTING.md`, once it exists, must point to `docs/adr/` as well.

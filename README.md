@@ -11,6 +11,7 @@ A quiet design system for dense product interfaces — in the register of Linear
 
 ```
 sanjou-ui/
+├── docs/adr/                 Architecture Decision Records (why things are the way they are)
 ├── apps/www/                 Next.js docs site + shadcn registry host + Storybook
 │   ├── registry/sanjou/ui/   ← the components (source of the registry)
 │   ├── registry.json         ← registry manifest (the `theme` item is generated)
