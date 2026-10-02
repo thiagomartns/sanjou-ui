@@ -3,6 +3,7 @@
   "extends": ["//"],
   "tasks": {
     "build": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/apps/www/registry.json"],
       "outputs": [
         "sanjou.css",
         "tokens.json",
