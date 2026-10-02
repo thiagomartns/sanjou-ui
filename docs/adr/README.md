@@ -17,6 +17,7 @@ Não escreva ADR para correções pontuais, detalhes de implementação ou plano
 - Se duas branches paralelas usarem o mesmo número, quem fizer o merge por último renumera.
 - Um ADR aceito não é reescrito: para mudar a decisão, crie outro e atualize só o Status do antigo.
 - Curto: um ADR bom cabe numa tela.
+- Idioma: ADRs são escritos em português, por serem registros internos do mantenedor. Docs de uso (`README.md`, `CONTRIBUTING.md`), o `CLAUDE.md` e o texto de UI ficam em inglês.
 
 ## Índice
 
