@@ -42,7 +42,7 @@ pnpm --filter www exec playwright install chromium   # browser for Storybook tes
 pnpm tokens            # regenerate tokens (also runs in build)
 pnpm dev               # docs site on http://localhost:3000
 pnpm storybook         # Storybook on http://localhost:6006
-pnpm test              # token tests + every story as a browser test with axe
+pnpm test              # token tests + every story as a browser test with axe, light and dark
 pnpm lint && pnpm typecheck
 ```
 
