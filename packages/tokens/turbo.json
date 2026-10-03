@@ -9,7 +9,10 @@
         "tokens.json",
         "CONTRAST.md",
         "figma/**",
-        "$TURBO_ROOT$/apps/www/registry.json"
+        "$TURBO_ROOT$/apps/www/registry.json",
+        "$TURBO_ROOT$/apps/www/public/favicon.svg",
+        "$TURBO_ROOT$/.github/assets/sanjou-mark.svg",
+        "$TURBO_ROOT$/.github/assets/sanjou-mark-dark.svg"
       ]
     }
   }

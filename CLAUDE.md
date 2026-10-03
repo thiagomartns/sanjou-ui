@@ -4,7 +4,7 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 
 ## Architecture
 
-- `packages/tokens` — token generator (plain Node ESM, zero deps). `src/config.mjs` is the single source of truth. Everything else in that package (`sanjou.css`, `tokens.json`, `figma/`, `CONTRAST.md`) and the `theme` item in `apps/www/registry.json` are GENERATED: never edit them by hand; edit config and run `pnpm tokens`.
+- `packages/tokens` — token generator (plain Node ESM, zero deps). `src/config.mjs` is the single source of truth. Everything else in that package (`sanjou.css`, `tokens.json`, `figma/`, `CONTRAST.md`) the `theme` item in `apps/www/registry.json`, the brand mark (`.github/assets/sanjou-mark*.svg`) and `apps/www/public/favicon.svg` are GENERATED: never edit them by hand; edit config and run `pnpm tokens`.
 - `apps/www` — Next.js 15 (App Router) app that is at the same time: the docs site, the shadcn registry host (`shadcn build` → `public/r`), and the Storybook project.
 - Components live in `apps/www/registry/sanjou/ui/*.tsx`. They are distributed as source through the shadcn CLI, NOT as an npm package.
 
