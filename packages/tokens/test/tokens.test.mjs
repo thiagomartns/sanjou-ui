@@ -41,6 +41,25 @@ test('registry theme exposes every semantic token in light and dark', () => {
   }
 });
 
+test('registry theme carries the shadows and easing that sanjou.css defines', () => {
+  const item = buildRegistryTheme(buildPalette());
+  const css = buildCss(buildPalette());
+  for (const name of [
+    'shadow-xs',
+    'shadow-sm',
+    'shadow-md',
+    'shadow-lg',
+    'ease-standard',
+    'ease-out',
+  ]) {
+    assert.ok(css.includes(`--${name}: ${item.cssVars.theme[name]};`), name);
+  }
+  // In cssVars the shadcn CLI would wrap the HSL channels in hsl() and break the shadows.
+  assert.equal(item.cssVars.light['shadow-color'], undefined);
+  assert.ok(item.css[':root']['--shadow-color']);
+  assert.ok(item.css['.dark']['--shadow-color']);
+});
+
 test('parseRef splits the alpha suffix', () => {
   assert.deepEqual(parseRef('gray.12/50'), { base: 'gray.12', alpha: 0.5 });
   assert.deepEqual(parseRef('gray.12'), { base: 'gray.12', alpha: 1 });

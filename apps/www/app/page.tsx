@@ -91,8 +91,8 @@ export default function Home() {
         <ol className="grid list-decimal gap-4 pl-5 text-sm">
           <li className="grid gap-2">
             <span>
-              Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized (
-              <code className="font-mono">npx shadcn@latest init</code>).
+              Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix (
+              <code className="font-mono">npx shadcn@latest init --base radix</code>).
             </span>
           </li>
           <li className="grid gap-2">
@@ -103,7 +103,7 @@ export default function Home() {
           </li>
           <li className="grid gap-2">
             <span>Install the theme first, then any component:</span>
-            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add @sanjou/button @sanjou/input @sanjou/label`}</Code>
+            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label`}</Code>
           </li>
           <li className="grid gap-2">
             <span>
@@ -144,6 +144,23 @@ export default function Home() {
             <p id="slug-help" className="text-sm text-muted-foreground">
               Shown in the URL and in invites.
             </p>
+          </div>
+        </Preview>
+
+        <Preview
+          name="label"
+          title="Label"
+          description="Names a control: clicking it focuses or toggles the field. Mark optional fields in words."
+        >
+          <div className="grid w-full max-w-sm gap-1.5">
+            <Label htmlFor="company">
+              Company <span className="font-normal text-muted-foreground">(optional)</span>
+            </Label>
+            <Input id="company" />
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="product-updates" />
+            <Label htmlFor="product-updates">Send me product updates</Label>
           </div>
         </Preview>
 
