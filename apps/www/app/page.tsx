@@ -21,6 +21,7 @@ import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
 import { Separator } from '@/registry/sanjou/ui/separator';
 import { Skeleton } from '@/registry/sanjou/ui/skeleton';
 import { Switch } from '@/registry/sanjou/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/registry/sanjou/ui/tabs';
 import { Textarea } from '@/registry/sanjou/ui/textarea';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/registry/sanjou/ui/tooltip';
 
@@ -258,6 +259,29 @@ export default function Home() {
               </div>
             ))}
           </RadioGroup>
+        </Preview>
+
+        <Preview
+          name="tabs"
+          title="Tabs"
+          description="Switches between related panels. Arrow keys move between tabs."
+        >
+          <Tabs defaultValue="overview" className="w-full max-w-sm">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="activity">Activity</TabsTrigger>
+              <TabsTrigger value="settings">Settings</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview" className="text-sm text-muted-foreground">
+              Three deployments this week, all healthy.
+            </TabsContent>
+            <TabsContent value="activity" className="text-sm text-muted-foreground">
+              No activity in the last 24 hours.
+            </TabsContent>
+            <TabsContent value="settings" className="text-sm text-muted-foreground">
+              Project settings are read-only for viewers.
+            </TabsContent>
+          </Tabs>
         </Preview>
 
         <Preview

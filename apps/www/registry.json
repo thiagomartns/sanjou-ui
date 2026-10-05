@@ -510,6 +510,21 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switch between related panels: Tabs, TabsList, TabsTrigger, TabsContent (Radix Tabs).",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
