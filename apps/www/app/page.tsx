@@ -148,6 +148,23 @@ export default function Home() {
         </Preview>
 
         <Preview
+          name="label"
+          title="Label"
+          description="Names a control: clicking it focuses or toggles the field. Mark optional fields in words."
+        >
+          <div className="grid w-full max-w-sm gap-1.5">
+            <Label htmlFor="company">
+              Company <span className="font-normal text-muted-foreground">(optional)</span>
+            </Label>
+            <Input id="company" />
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="product-updates" />
+            <Label htmlFor="product-updates">Send me product updates</Label>
+          </div>
+        </Preview>
+
+        <Preview
           name="badge"
           title="Badge"
           description="Status never relies on color alone: the word carries the meaning."
