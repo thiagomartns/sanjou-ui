@@ -10,7 +10,8 @@ const meta = {
   component: Toaster,
   parameters: { layout: 'centered' },
   // Sonner keeps toasts in a module-level store: clear it so one story's toasts never
-  // show up in the next.
+  // show up in the next. The Docs page renders every story at once, so each story also has
+  // its own <Toaster id> and fires with the matching toasterId.
   beforeEach: () => {
     toast.dismiss();
   },
@@ -26,6 +27,7 @@ function ArchiveDemo({ onUndo }: { onUndo: () => void }) {
         variant="outline"
         onClick={() =>
           toast('Project archived', {
+            toasterId: 'default',
             description: 'It stays read-only until you restore it.',
             action: { label: 'Undo', onClick: onUndo },
           })
@@ -33,7 +35,7 @@ function ArchiveDemo({ onUndo }: { onUndo: () => void }) {
       >
         Archive project
       </Button>
-      <Toaster />
+      <Toaster id="default" />
     </>
   );
 }
@@ -67,20 +69,32 @@ export const Types: Story = {
   render: () => (
     <>
       <div className="flex flex-wrap gap-2">
-        <Button variant="outline" onClick={() => toast.success('Deploy finished')}>
+        <Button
+          variant="outline"
+          onClick={() => toast.success('Deploy finished', { toasterId: 'types' })}
+        >
           Show success
         </Button>
-        <Button variant="outline" onClick={() => toast.info('A new version is available')}>
+        <Button
+          variant="outline"
+          onClick={() => toast.info('A new version is available', { toasterId: 'types' })}
+        >
           Show info
         </Button>
-        <Button variant="outline" onClick={() => toast.warning('Your trial ends in 3 days')}>
+        <Button
+          variant="outline"
+          onClick={() => toast.warning('Your trial ends in 3 days', { toasterId: 'types' })}
+        >
           Show warning
         </Button>
-        <Button variant="outline" onClick={() => toast.error('Deploy failed')}>
+        <Button
+          variant="outline"
+          onClick={() => toast.error('Deploy failed', { toasterId: 'types' })}
+        >
           Show error
         </Button>
       </div>
-      <Toaster expand />
+      <Toaster id="types" expand />
     </>
   ),
   play: async ({ canvas, canvasElement, userEvent }) => {
@@ -102,19 +116,25 @@ export const RichColors: Story = {
   render: () => (
     <>
       <div className="flex flex-wrap gap-2">
-        <Button variant="outline" onClick={() => toast.success('Deploy finished')}>
+        <Button
+          variant="outline"
+          onClick={() => toast.success('Deploy finished', { toasterId: 'rich-colors' })}
+        >
           Show success
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast.error('Deploy failed', { description: 'The build step exited with code 1.' })
+            toast.error('Deploy failed', {
+              toasterId: 'rich-colors',
+              description: 'The build step exited with code 1.',
+            })
           }
         >
           Show error
         </Button>
       </div>
-      <Toaster richColors expand />
+      <Toaster id="rich-colors" richColors expand />
     </>
   ),
   play: async ({ canvas, canvasElement, userEvent }) => {
