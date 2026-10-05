@@ -29,3 +29,5 @@ jobs:
         run: pnpm --filter www exec playwright install --with-deps chromium
       - run: pnpm test
       - run: pnpm build
+      # The release deploys this build to GitHub Pages (storybook.yml); catch breakage before that.
+      - run: pnpm --filter www build-storybook

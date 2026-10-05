@@ -14,6 +14,8 @@ A quiet design system for dense product interfaces — in the register of Linear
 - **Zero runtime.** No provider, no JS theme: dark mode is a `.dark` class.
 - **Server Components by default.** Only components with real interactivity carry `"use client"`.
 
+**Storybook:** [thiagomartns.github.io/sanjou-ui](https://thiagomartns.github.io/sanjou-ui/), published on each release.
+
 ## Repository layout
 
 ```

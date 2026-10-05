@@ -2,7 +2,7 @@
 
 - **Status:** Aceito
 - **Data:** 2026-10-01
-- **Implementação:** tema em `feature/storybook-and-components`; fontes em `chore/storybook-local-fonts` (pacote `geist` copiado por `staticDirs` em `apps/www/.storybook/main.ts`, com `@font-face` em `apps/www/.storybook/static/fonts.css`, ligado pelo `preview-head.html` e pelo `manager-head.html`)
+- **Implementação:** tema em `feature/storybook-and-components`; fontes em `chore/storybook-local-fonts` (pacote `geist` copiado por `staticDirs` em `apps/www/.storybook/main.ts`, com `@font-face` em `apps/www/.storybook/static/fonts.css`, ligado pelo `preview-head.html` e pelo `manager-head.html`); deploy em `.github/workflows/storybook.yml`, com o build também rodando no CI
 
 ## Contexto
 
