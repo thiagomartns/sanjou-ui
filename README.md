@@ -14,7 +14,7 @@ A quiet design system for dense product interfaces — in the register of Linear
 - **Zero runtime.** No provider, no JS theme: dark mode is a `.dark` class.
 - **Server Components by default.** Only components with real interactivity carry `"use client"`.
 
-**Storybook:** [thiagomartns.github.io/sanjou-ui](https://thiagomartns.github.io/sanjou-ui/), published from `develop` until the first release, then on each release.
+**Docs and registry:** [sanjou-ui.vercel.app](https://sanjou-ui.vercel.app), published on each release. **Storybook:** [thiagomartns.github.io/sanjou-ui](https://thiagomartns.github.io/sanjou-ui/), published from `develop` until the first release, then on each release.
 
 ## Repository layout
 
@@ -85,8 +85,6 @@ npx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label @sa
 `init` creates its own `components/ui/button.tsx`; `--overwrite` replaces it with the Sanjou one.
 
 Load Geist via `next/font/google` with the variables `--font-geist-sans` and `--font-geist-mono`.
-
-> Replace `sanjou-ui.vercel.app` (here, in `apps/www/registry.json` and in the docs page) with your real deployment URL.
 
 ## Changing a token
 

@@ -2,7 +2,7 @@
 
 - **Status:** Aceito
 - **Data:** 2026-10-01
-- **Implementação:** workflow de release em `feature/npm-publish`; workflow do Storybook em `feature/storybook-and-components`
+- **Implementação:** workflow de release em `feature/npm-publish`; workflow do Storybook em `.github/workflows/storybook.yml`; site e registry em `.github/workflows/site.yml` ([0011](0011-site-and-registry-on-vercel.md))
 
 ## Contexto
 

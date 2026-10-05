@@ -21,18 +21,19 @@ Não escreva ADR para correções pontuais, detalhes de implementação ou plano
 
 ## Índice
 
-| #                                                       | Decisão                                                           | Status |
-| ------------------------------------------------------- | ----------------------------------------------------------------- | ------ |
-| [0001](0001-adrs-and-ai-artifacts-outside-git.md)       | Registrar decisões em ADRs e manter artefatos de IA fora do git   | Aceito |
-| [0002](0002-git-flow-merge-strategy.md)                 | Git flow com estratégia de merge por tipo de PR                   | Aceito |
-| [0003](0003-release-please-conventional-commits.md)     | Versionamento com release-please e Conventional Commits           | Aceito |
-| [0004](0004-single-version-for-all-packages.md)         | Versão única `vX.Y.Z` para todos os pacotes publicáveis           | Aceito |
-| [0005](0005-production-deploy-on-release-only.md)       | Deploy de produção somente na release                             | Aceito |
-| [0006](0006-components-as-npm-package-single-source.md) | Distribuir componentes também como `@sanjou/ui`, com fonte única  | Aceito |
-| [0007](0007-storybook-on-github-pages.md)               | Storybook público no GitHub Pages, com fontes servidas localmente | Aceito |
-| [0008](0008-vscode-personal-settings-skip-worktree.md)  | Settings pessoais do VS Code via `skip-worktree`                  | Aceito |
-| [0009](0009-toast-with-sonner.md)                       | Toast com `sonner`, com as cores ligadas aos tokens semânticos    | Aceito |
-| [0010](0010-form-with-react-hook-form-and-zod.md)       | Formulários com `react-hook-form` e `zod`                         | Aceito |
+| #                                                       | Decisão                                                               | Status |
+| ------------------------------------------------------- | --------------------------------------------------------------------- | ------ |
+| [0001](0001-adrs-and-ai-artifacts-outside-git.md)       | Registrar decisões em ADRs e manter artefatos de IA fora do git       | Aceito |
+| [0002](0002-git-flow-merge-strategy.md)                 | Git flow com estratégia de merge por tipo de PR                       | Aceito |
+| [0003](0003-release-please-conventional-commits.md)     | Versionamento com release-please e Conventional Commits               | Aceito |
+| [0004](0004-single-version-for-all-packages.md)         | Versão única `vX.Y.Z` para todos os pacotes publicáveis               | Aceito |
+| [0005](0005-production-deploy-on-release-only.md)       | Deploy de produção somente na release                                 | Aceito |
+| [0006](0006-components-as-npm-package-single-source.md) | Distribuir componentes também como `@sanjou/ui`, com fonte única      | Aceito |
+| [0007](0007-storybook-on-github-pages.md)               | Storybook público no GitHub Pages, com fontes servidas localmente     | Aceito |
+| [0008](0008-vscode-personal-settings-skip-worktree.md)  | Settings pessoais do VS Code via `skip-worktree`                      | Aceito |
+| [0009](0009-toast-with-sonner.md)                       | Toast com `sonner`, com as cores ligadas aos tokens semânticos        | Aceito |
+| [0010](0010-form-with-react-hook-form-and-zod.md)       | Formulários com `react-hook-form` e `zod`                             | Aceito |
+| [0011](0011-site-and-registry-on-vercel.md)             | Site e registry na Vercel, com deploy de produção pela CLI na release | Aceito |
 
 ## Candidatas (decisões existentes sem motivo registrado)
 
