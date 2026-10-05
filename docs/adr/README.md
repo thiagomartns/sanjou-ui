@@ -31,6 +31,7 @@ Não escreva ADR para correções pontuais, detalhes de implementação ou plano
 | [0006](0006-components-as-npm-package-single-source.md) | Distribuir componentes também como `@sanjou/ui`, com fonte única  | Aceito |
 | [0007](0007-storybook-on-github-pages.md)               | Storybook público no GitHub Pages, com fontes servidas localmente | Aceito |
 | [0008](0008-vscode-personal-settings-skip-worktree.md)  | Settings pessoais do VS Code via `skip-worktree`                  | Aceito |
+| [0009](0009-toast-with-sonner.md)                       | Toast com `sonner`, com as cores ligadas aos tokens semânticos    | Aceito |
 
 ## Candidatas (decisões existentes sem motivo registrado)
 

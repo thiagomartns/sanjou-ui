@@ -588,6 +588,22 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toast (Sonner)",
+      "description": "Toaster for short, non-blocking notifications, on sonner with Sanjou tokens. Mount <Toaster /> once and call toast() from 'sonner'.",
+      "dependencies": [
+        "sonner",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
