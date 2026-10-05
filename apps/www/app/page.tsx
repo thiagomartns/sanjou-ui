@@ -1,4 +1,4 @@
-import { CircleCheck, Search } from 'lucide-react';
+import { CircleCheck, Copy, Search } from 'lucide-react';
 
 import { Code } from '@/components/site/code';
 import { Preview } from '@/components/site/preview';
@@ -14,11 +14,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/registry/sanjou/ui/card';
+import { Checkbox } from '@/registry/sanjou/ui/checkbox';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
 import { Separator } from '@/registry/sanjou/ui/separator';
 import { Skeleton } from '@/registry/sanjou/ui/skeleton';
+import { Switch } from '@/registry/sanjou/ui/switch';
 import { Textarea } from '@/registry/sanjou/ui/textarea';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/registry/sanjou/ui/tooltip';
 
 const registriesSnippet = `{
   "registries": {
@@ -211,6 +215,64 @@ export default function Home() {
             <AlertTitle>Deploy finished</AlertTitle>
             <AlertDescription>Version 0.1.0 is live in production.</AlertDescription>
           </Alert>
+        </Preview>
+
+        <Preview
+          name="checkbox"
+          title="Checkbox"
+          description="For choices that apply on submit. Mixed state for partial selections."
+        >
+          <div className="grid gap-2">
+            <div className="flex items-center gap-2">
+              <Checkbox id="preview-terms" defaultChecked />
+              <Label htmlFor="preview-terms">Accept the terms of service</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="preview-all" checked="indeterminate" />
+              <Label htmlFor="preview-all">Select all projects</Label>
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="switch"
+          title="Switch"
+          description="For settings that apply immediately. Ink when on, never color alone."
+        >
+          <div className="flex items-center gap-2">
+            <Switch id="preview-notifications" defaultChecked />
+            <Label htmlFor="preview-notifications">Email notifications</Label>
+          </div>
+        </Preview>
+
+        <Preview
+          name="radio-group"
+          title="Radio group"
+          description="One choice from a short, visible list. Arrow keys move the selection."
+        >
+          <RadioGroup defaultValue="pro" aria-label="Plan">
+            {['Hobby', 'Pro', 'Enterprise'].map((plan) => (
+              <div key={plan} className="flex items-center gap-2">
+                <RadioGroupItem id={`preview-${plan}`} value={plan.toLowerCase()} />
+                <Label htmlFor={`preview-${plan}`}>{plan}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </Preview>
+
+        <Preview
+          name="tooltip"
+          title="Tooltip"
+          description="Names icon-only controls. Opens on hover and keyboard focus."
+        >
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Copy API key">
+                <Copy />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Copy API key</TooltipContent>
+          </Tooltip>
         </Preview>
       </section>
     </div>

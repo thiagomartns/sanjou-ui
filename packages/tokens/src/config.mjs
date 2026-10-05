@@ -56,7 +56,7 @@ export const SEMANTIC = {
   destructive: ['red.9', 'red.9'],
   'destructive-foreground': [W, W],
   border: ['gray.6', 'gray.6'],
-  input: ['gray.8', 'gray.8'],
+  input: ['gray.9', 'gray.9'],
   ring: ['indigo.9', 'indigo.9'],
   brand: ['indigo.9', 'indigo.9'],
   'brand-foreground': [W, W],
@@ -92,8 +92,8 @@ export const CONTRAST_RULES = [
   ['warning-text', 'warning-subtle', 4.5],
   ['danger-text', 'danger-subtle', 4.5],
   ['ring', 'background', 3],
-  // Deliberate exception, documented in the README: input borders sit below 3:1.
-  ['input', 'background', 1.8],
+  // Field borders and the unchecked switch track identify the control (WCAG 1.4.11).
+  ['input', 'background', 3],
 ];
 
 export const RADIUS = { sm: 4, md: 6, lg: 8, xl: 12, full: 9999 };

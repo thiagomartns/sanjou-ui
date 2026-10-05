@@ -20,7 +20,7 @@ Generated — WCAG 2 relative-luminance contrast.
 | light | `warning-text` on `warning-subtle` | 4.98:1 | ≥4.5 | ✅ |
 | light | `danger-text` on `danger-subtle` | 5.72:1 | ≥4.5 | ✅ |
 | light | `ring` on `background` | 5.85:1 | ≥3 | ✅ |
-| light | `input` on `background` | 1.90:1 | ≥1.8 | ✅ |
+| light | `input` on `background` | 3.38:1 | ≥3 | ✅ |
 | dark | `foreground` on `background` | 16.44:1 | ≥7 | ✅ |
 | dark | `muted-foreground` on `background` | 10.02:1 | ≥4.5 | ✅ |
 | dark | `muted-foreground` on `muted` | 9.56:1 | ≥4.5 | ✅ |
@@ -37,4 +37,4 @@ Generated — WCAG 2 relative-luminance contrast.
 | dark | `warning-text` on `warning-subtle` | 8.83:1 | ≥4.5 | ✅ |
 | dark | `danger-text` on `danger-subtle` | 8.59:1 | ≥4.5 | ✅ |
 | dark | `ring` on `background` | 4.00:1 | ≥3 | ✅ |
-| dark | `input` on `background` | 2.34:1 | ≥1.8 | ✅ |
+| dark | `input` on `background` | 4.17:1 | ≥3 | ✅ |
