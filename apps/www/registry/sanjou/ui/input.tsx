@@ -12,7 +12,7 @@ function Input({ className, type, ...props }: ComponentProps<'input'>) {
         'placeholder:text-muted-foreground hover:border-gray-10',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
         'aria-invalid:border-destructive',
-        'disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-60',
+        'disabled:pointer-events-none disabled:bg-muted disabled:opacity-50',
         'file:mr-2 file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium',
         className,
       )}
