@@ -1,6 +1,15 @@
 'use client';
 
-import { createContext, useContext, useId, type ComponentProps } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useState,
+  type ComponentProps,
+} from 'react';
 import type * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
 import {
@@ -38,7 +47,26 @@ function FormField<
   );
 }
 
-const FormItemContext = createContext<{ id: string } | null>(null);
+type FormItemPart = 'description' | 'message';
+
+type FormItemContextValue = {
+  id: string;
+  /** Which optional parts are rendered, so aria-describedby only points at existing ids. */
+  parts: Record<FormItemPart, boolean>;
+  register: (part: FormItemPart, rendered: boolean) => void;
+};
+
+const FormItemContext = createContext<FormItemContextValue | null>(null);
+
+/** Marks a part as rendered while `rendered` is true and the part is mounted. */
+function useRegisterPart(part: FormItemPart, rendered: boolean) {
+  const register = useContext(FormItemContext)?.register;
+  useLayoutEffect(() => {
+    if (!register) return;
+    register(part, rendered);
+    return () => register(part, false);
+  }, [register, part, rendered]);
+}
 
 /** Field state and the ids that tie the label, control, description and message together. */
 function useFormField() {
@@ -50,10 +78,12 @@ function useFormField() {
 
   const formState = useFormState({ name: fieldContext.name });
   const fieldState = getFieldState(fieldContext.name, formState);
-  const { id } = itemContext;
+  const { id, parts } = itemContext;
 
   return {
     id,
+    hasDescription: parts.description,
+    hasMessage: parts.message,
     name: fieldContext.name,
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
@@ -64,14 +94,22 @@ function useFormField() {
 
 function FormItem({ className, ...props }: ComponentProps<'div'>) {
   const id = useId();
+  const [parts, setParts] = useState({ description: false, message: false });
+  const register = useCallback((part: FormItemPart, rendered: boolean) => {
+    setParts((current) =>
+      current[part] === rendered ? current : { ...current, [part]: rendered },
+    );
+  }, []);
+  const value = useMemo(() => ({ id, parts, register }), [id, parts, register]);
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={value}>
       <div data-slot="form-item" className={cn('grid gap-1.5', className)} {...props} />
     </FormItemContext.Provider>
   );
 }
 
+/** Keeps its color when the field is invalid: the border and the message carry the error. */
 function FormLabel(props: ComponentProps<typeof LabelPrimitive.Root>) {
   const { error, formItemId } = useFormField();
 
@@ -80,13 +118,17 @@ function FormLabel(props: ComponentProps<typeof LabelPrimitive.Root>) {
 
 /** Passes the id, `aria-invalid` and `aria-describedby` to its only child, the control. */
 function FormControl(props: ComponentProps<typeof Slot>) {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
+  const { error, formItemId, formDescriptionId, formMessageId, hasDescription, hasMessage } =
+    useFormField();
+  const describedBy = [hasDescription && formDescriptionId, hasMessage && formMessageId]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <Slot
       data-slot="form-control"
       id={formItemId}
-      aria-describedby={error ? `${formDescriptionId} ${formMessageId}` : formDescriptionId}
+      aria-describedby={describedBy || undefined}
       aria-invalid={!!error}
       {...props}
     />
@@ -95,6 +137,7 @@ function FormControl(props: ComponentProps<typeof Slot>) {
 
 function FormDescription({ className, ...props }: ComponentProps<'p'>) {
   const { formDescriptionId } = useFormField();
+  useRegisterPart('description', true);
 
   return (
     <p
@@ -110,6 +153,7 @@ function FormDescription({ className, ...props }: ComponentProps<'p'>) {
 function FormMessage({ className, children, ...props }: ComponentProps<'p'>) {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error.message ?? '') : children;
+  useRegisterPart('message', !!body);
   if (!body) return null;
 
   return (

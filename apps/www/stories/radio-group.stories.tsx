@@ -12,7 +12,7 @@ const meta = {
       description: {
         component: `Picks one option from a small set when all options should stay visible, usually up to five. For longer lists, use Select.
 
-Name the group with \`aria-label\` or, in a form, a \`fieldset\` and \`legend\`, and give each item a \`Label\`. Arrow keys move the selection.`,
+Name the group with \`aria-label\` or, in a form, a FieldSet with \`<FieldLegend variant="label">\`, and give each item a \`Label\`. Arrow keys move the selection.`,
       },
     },
   },

@@ -21,6 +21,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/registry/sanjou/ui/dialog';
+import { FieldLegend, FieldSet } from '@/registry/sanjou/ui/field';
 import { Label } from '@/registry/sanjou/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
 import {
@@ -116,8 +117,8 @@ function NotificationSettings({ onSave }: NotificationSettingsProps) {
             ))}
           </div>
           <Separator />
-          <fieldset className="grid gap-3">
-            <legend className="mb-3 text-sm leading-5 font-medium">Activity digest</legend>
+          <FieldSet>
+            <FieldLegend variant="label">Activity digest</FieldLegend>
             <RadioGroup name="digest" defaultValue="weekly" className="flex gap-6">
               {frequencies.map((frequency) => (
                 <div key={frequency.value} className="flex items-center gap-2">
@@ -126,7 +127,7 @@ function NotificationSettings({ onSave }: NotificationSettingsProps) {
                 </div>
               ))}
             </RadioGroup>
-          </fieldset>
+          </FieldSet>
           <div className="grid gap-1.5">
             <Label htmlFor="timezone">Digest time zone</Label>
             <Select name="timezone" defaultValue="utc">

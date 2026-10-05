@@ -137,6 +137,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: { onSubmit: fn() },
   play: async ({ args, canvas, userEvent }) => {
+    // Only rendered parts are referenced: Email has no description and no error yet.
+    await expect(canvas.getByLabelText('Email')).not.toHaveAttribute('aria-describedby');
+    await expect(canvas.getByLabelText('Username')).toHaveAccessibleDescription(
+      'Shown on comments and in mentions.',
+    );
+
     await userEvent.type(canvas.getByLabelText('Username'), 'ada');
     await userEvent.type(canvas.getByLabelText('Email'), 'ada@sanjou.dev');
     await userEvent.click(canvas.getByRole('combobox', { name: 'Role' }));
@@ -170,9 +176,10 @@ export const Errors: Story = {
       ),
     );
     await expect(username).toHaveAttribute('aria-invalid', 'true');
-    await expect(canvas.getByLabelText('Email')).toHaveAccessibleDescription(
-      'Enter a valid email address.',
-    );
+    const email = canvas.getByLabelText('Email');
+    await expect(email).toHaveAccessibleDescription('Enter a valid email address.');
+    // Email has no FormDescription, so it points at the message only.
+    await expect(email.getAttribute('aria-describedby')?.split(' ')).toHaveLength(1);
     await expect(canvas.getByText('Choose a role.')).toBeVisible();
     await expect(canvas.getByText('Accept the terms to continue.')).toBeVisible();
     await expect(args.onSubmit).not.toHaveBeenCalled();

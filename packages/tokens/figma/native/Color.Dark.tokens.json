@@ -1462,5 +1462,24 @@
         "STROKE_COLOR"
       ]
     }
+  },
+  "overlay": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.6,
+      "hex": "#000000"
+    },
+    "$extensions": {
+      "com.figma.scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ]
+    }
   }
 }

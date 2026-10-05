@@ -5,6 +5,16 @@ const scales = Object.keys(tokens.light.scale);
 const semantic = Object.keys(tokens.light).filter((k) => k !== 'scale');
 const steps = Array.from({ length: 12 }, (_, i) => i + 1);
 
+/** Tokens with alpha (#rrggbbaa in tokens.json) sit on a checkerboard, so the transparency shows. */
+function swatch(name: string) {
+  const { $value } = tokens.light[name as keyof typeof tokens.light] as { $value: string };
+  const color = `var(--${name})`;
+  if (!/^#[0-9a-f]{8}$/i.test($value)) return color;
+  const checker =
+    'repeating-conic-gradient(var(--gray-4) 0 25%, var(--background) 0 50%) 0 0 / 12px 12px';
+  return `linear-gradient(${color}, ${color}), ${checker}`;
+}
+
 const meta = {
   title: 'Foundations/Color',
   // The Docs page is color.mdx.
@@ -47,7 +57,7 @@ export const Semantic: Story = {
         <div key={name} className="grid gap-1.5">
           <div
             className="h-12 rounded-md border border-border"
-            style={{ background: `var(--${name})` }}
+            style={{ background: swatch(name) }}
           />
           <span className="font-mono text-xs">{name}</span>
         </div>

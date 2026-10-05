@@ -19,7 +19,7 @@ const meta = {
 - \`brand\`: rare brand moments, such as the call to action of an empty state.
 - \`destructive\`: actions that delete or cannot be undone, usually after a confirmation.
 
-\`md\` is the default size. Use \`sm\` in dense tables and toolbars, \`lg\` in standalone forms, and \`icon\` for icon-only buttons, which need an \`aria-label\`. With \`asChild\`, a link gets button styles and keeps link semantics.`,
+\`md\` is the default size, with 14px text like fields. Use \`sm\` (13px text) in dense tables and toolbars, \`lg\` in standalone forms, and \`icon\` for icon-only buttons, which need an \`aria-label\`. With \`asChild\`, a link gets button styles and keeps link semantics.`,
       },
     },
   },

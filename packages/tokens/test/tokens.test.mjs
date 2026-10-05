@@ -1,7 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { contrast, oklchToHex } from '../src/color.mjs';
-import { buildPalette, checkContrast, buildRegistryTheme } from '../src/generate.mjs';
+import {
+  buildCss,
+  buildDtcg,
+  buildFigma,
+  buildPalette,
+  buildRegistryTheme,
+  checkContrast,
+  parseRef,
+} from '../src/generate.mjs';
 import { SEMANTIC } from '../src/config.mjs';
 
 test('contrast: black on white is 21:1', () => {
@@ -31,4 +39,18 @@ test('registry theme exposes every semantic token in light and dark', () => {
     assert.ok(item.cssVars.dark[k], `dark ${k}`);
     assert.ok(item.cssVars.theme[`color-${k}`], `theme color-${k}`);
   }
+});
+
+test('parseRef splits the alpha suffix', () => {
+  assert.deepEqual(parseRef('gray.12/50'), { base: 'gray.12', alpha: 0.5 });
+  assert.deepEqual(parseRef('gray.12'), { base: 'gray.12', alpha: 1 });
+});
+
+test('overlay keeps its alpha in every output', () => {
+  const p = buildPalette();
+  assert.match(buildCss(p), /--overlay: color-mix\(in oklch, var\(--gray-12\) 50%, transparent\);/);
+  assert.match(buildDtcg(p).light.overlay.$value, /^#[0-9a-f]{6}80$/);
+  assert.equal(buildDtcg(p).dark.overlay.$value, '#00000099');
+  assert.equal(buildFigma(p, 'native')['Color.Light.tokens.json'].overlay.$value.alpha, 0.5);
+  assert.match(buildFigma(p, 'hex')['Color.Dark.tokens.json'].overlay.$value, /^#00000099$/);
 });

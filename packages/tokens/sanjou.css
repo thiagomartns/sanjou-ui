@@ -98,6 +98,7 @@
   --warning-text: var(--amber-11);
   --danger-subtle: var(--red-3);
   --danger-text: var(--red-11);
+  --overlay: color-mix(in oklch, var(--gray-12) 50%, transparent);
   --radius: 0.5rem;
   --shadow-color: 222 20% 12%;
 }
@@ -198,6 +199,7 @@
   --warning-text: var(--amber-11);
   --danger-subtle: var(--red-3);
   --danger-text: var(--red-11);
+  --overlay: color-mix(in oklch, #000000 60%, transparent);
   --shadow-color: 0 0% 0%;
 }
 
@@ -295,6 +297,7 @@
   --color-warning-text: var(--warning-text);
   --color-danger-subtle: var(--danger-subtle);
   --color-danger-text: var(--danger-text);
+  --color-overlay: var(--overlay);
 
   --font-sans: var(--font-geist-sans, "Geist"), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, "SFMono-Regular", monospace;
