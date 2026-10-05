@@ -1,6 +1,7 @@
 import { CircleCheck, Copy, MoreHorizontal, Search, Trash2 } from 'lucide-react';
 
 import { Code } from '@/components/site/code';
+import { FormDemo } from '@/components/site/form-demo';
 import { Preview } from '@/components/site/preview';
 import { ThemeToggle } from '@/components/site/theme-toggle';
 import { ToastDemo } from '@/components/site/toast-demo';
@@ -380,6 +381,14 @@ export default function Home() {
               </SelectContent>
             </Select>
           </div>
+        </Preview>
+
+        <Preview
+          name="form"
+          title="Form"
+          description="react-hook-form and zod, with the label, help text and error wired to the field."
+        >
+          <FormDemo />
         </Preview>
 
         <Preview

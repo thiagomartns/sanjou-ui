@@ -1,0 +1,122 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as FormStories from './form.stories';
+
+<Meta of={FormStories} />
+
+# Form
+
+Wires form fields to `react-hook-form`, with a `zod` schema for validation. `FormControl` gives each control its id, `aria-invalid` and `aria-describedby`, so the label, the help text and the error are announced with the field.
+
+<Canvas of={FormStories.Default} />
+
+## Anatomy
+
+`FormField` connects one field to the form. Inside it, `FormItem` holds the label, the control, an optional description and the message.
+
+```tsx
+const form = useForm<Values>({ resolver: zodResolver(schema), defaultValues });
+
+<Form {...form}>
+  <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
+    <FormField
+      control={form.control}
+      name="username"
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>Username</FormLabel>
+          <FormControl>
+            <Input {...field} />
+          </FormControl>
+          <FormDescription>Shown on comments and in mentions.</FormDescription>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+    <Button type="submit">Save</Button>
+  </form>
+</Form>;
+```
+
+Inputs take `{...field}` directly. Radix controls need the value wired by hand: `value` and `onValueChange` on Select (with `value ?? ''`, so it stays controlled and shows the placeholder), `checked` and `onCheckedChange` on Checkbox and Switch.
+
+## Errors
+
+Select Send invite with the form empty to see the errors.
+
+<Canvas of={FormStories.Errors} />
+
+On submit, the first invalid field receives focus, and each message appears under its field. Write messages that say how to fix the value, such as "Use at least 3 characters", not only that it is wrong. For a failure that comes from the server, such as wrong credentials, show an Alert above the fields and mark them invalid with `form.setError` (see Patterns/Sign in).
+
+## When to validate
+
+The `mode` option of `useForm` decides when a field is first checked. After the first submit, fields check again on every change (`reValidateMode: 'onChange'`), so an error clears as soon as it is fixed.
+
+| `mode`               | First check                                     | Use it for                                                     |
+| -------------------- | ----------------------------------------------- | -------------------------------------------------------------- |
+| `onSubmit` (default) | On submit                                       | Most forms. Nobody sees an error before they try to continue.  |
+| `onTouched`          | When the field loses focus, then on each change | Longer forms, where finding all errors at the end is costly.   |
+| `onBlur`             | Every time the field loses focus                | Like `onTouched`, but the error only updates on the next blur. |
+| `onChange`           | On every keystroke                              | Live rules, such as a password strength meter.                 |
+
+Prefer `onSubmit` or `onTouched`. With `onChange`, an email field shows an error from the first letter, while the person is still typing.
+
+Clear the Name field, then leave it, in each example below.
+
+### On submit
+
+<Canvas of={FormStories.ValidateOnSubmit} />
+
+### On touched
+
+<Canvas of={FormStories.ValidateOnTouched} />
+
+### On blur
+
+<Canvas of={FormStories.ValidateOnBlur} />
+
+### On change
+
+<Canvas of={FormStories.ValidateOnChange} />
+
+## Dirty and touched
+
+`formState` tells the form apart from its saved values. The panel next to each example shows it live.
+
+| State           | Meaning                                                                       |
+| --------------- | ----------------------------------------------------------------------------- |
+| `isDirty`       | Some value differs from `defaultValues`. Typing the old value back clears it. |
+| `dirtyFields`   | The fields whose value differs from `defaultValues`.                          |
+| `touchedFields` | The fields that received focus and lost it, changed or not.                   |
+| `isValid`       | The schema accepts every value.                                               |
+| `isSubmitting`  | The submit handler is running.                                                |
+
+<Canvas of={FormStories.DirtyAndTouched} />
+
+Dirty is about the data: use it to decide whether there is anything to save, or to confirm before discarding changes (see Patterns/Settings). Touched is about the person: the field was visited. `mode: 'onTouched'` uses it to wait until someone leaves a field before showing its error.
+
+After a save, call `form.reset(savedValues)`. The saved values become the new defaults, and the form is clean again.
+
+## Submit button
+
+Choose when the submit button is enabled. In every option, disable it while `isSubmitting`, so a second click cannot send the form twice.
+
+| Option                         | `disabled`                   | Use it for                                                                      |
+| ------------------------------ | ---------------------------- | ------------------------------------------------------------------------------- |
+| Always enabled (default)       | `isSubmitting`               | Create forms and most others. Submitting shows what is missing.                 |
+| Enabled when there are changes | `!isDirty \|\| isSubmitting` | Edit forms, such as settings: there is nothing to save until something changes. |
+| Enabled when valid             | `!isValid \|\| isSubmitting` | Short forms with obvious rules, such as a single field.                         |
+
+A disabled button does not say why it is disabled, and keyboard users cannot focus it. Keep it enabled unless the reason is plain to see. "Enabled when valid" hides the errors until each field is fixed, so pair it with `mode: 'onChange'` or `'onTouched'`, which show them as the person types.
+
+### Always enabled, with a save in progress
+
+<Canvas of={FormStories.Submitting} />
+
+### Enabled when there are changes
+
+<Canvas of={FormStories.SubmitWhenDirty} />
+
+### Enabled when valid
+
+<Canvas of={FormStories.SubmitWhenValid} />
