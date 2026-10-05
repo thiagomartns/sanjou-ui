@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'Sanjou UI',
   description:
     'A quiet design system for dense product interfaces. Radix + Tailwind CSS 4, shadcn-style.',
+  icons: { icon: '/favicon.svg' },
 };
 
 // Sets .dark before first paint to avoid a flash of the wrong theme.

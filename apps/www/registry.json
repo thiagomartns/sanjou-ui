@@ -398,6 +398,57 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text field that grows with its content. Same states as Input; pair with Label.",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Thin horizontal or vertical rule. Decorative by default; set decorative={false} to expose it to assistive tech.",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Placeholder shape for loading content. Hidden from assistive tech; respects reduced motion.",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Inline message with optional icon: Alert, AlertTitle, AlertDescription. Variants: neutral, brand, success, warning, danger.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

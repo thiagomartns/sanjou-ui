@@ -1,0 +1,4 @@
+/* Story boxes on Docs pages use the app background, so they follow the `.dark` class. */
+.docs-story {
+  background-color: var(--background);
+}

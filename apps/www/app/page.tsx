@@ -1,8 +1,9 @@
-import { Search } from 'lucide-react';
+import { CircleCheck, Search } from 'lucide-react';
 
 import { Code } from '@/components/site/code';
 import { Preview } from '@/components/site/preview';
 import { ThemeToggle } from '@/components/site/theme-toggle';
+import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
 import { Badge } from '@/registry/sanjou/ui/badge';
 import { Button } from '@/registry/sanjou/ui/button';
 import {
@@ -15,6 +16,9 @@ import {
 } from '@/registry/sanjou/ui/card';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
+import { Separator } from '@/registry/sanjou/ui/separator';
+import { Skeleton } from '@/registry/sanjou/ui/skeleton';
+import { Textarea } from '@/registry/sanjou/ui/textarea';
 
 const registriesSnippet = `{
   "registries": {
@@ -152,6 +156,61 @@ export default function Home() {
               <Button>Generate new key</Button>
             </CardFooter>
           </Card>
+        </Preview>
+        <Preview
+          name="textarea"
+          title="Textarea"
+          description="Grows with its content. Same border, focus and error states as Input."
+        >
+          <div className="grid w-full max-w-sm gap-1.5">
+            <Label htmlFor="project-description">Description</Label>
+            <Textarea id="project-description" placeholder="What is this project for?" />
+          </div>
+        </Preview>
+
+        <Preview
+          name="separator"
+          title="Separator"
+          description="A hairline in the border color. Decorative unless it carries meaning."
+        >
+          <div className="grid w-full max-w-sm gap-3 text-sm">
+            <p className="font-medium">Sanjou UI</p>
+            <Separator />
+            <div className="flex h-5 items-center gap-3 text-muted-foreground">
+              <span>Docs</span>
+              <Separator orientation="vertical" />
+              <span>Changelog</span>
+              <Separator orientation="vertical" />
+              <span>GitHub</span>
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="skeleton"
+          title="Skeleton"
+          description="Mirrors the shape of the content it replaces. Stops pulsing for reduced motion."
+        >
+          <div aria-busy="true" className="flex w-full max-w-sm items-center gap-3">
+            <span className="sr-only">Loading profile</span>
+            <Skeleton className="size-10 rounded-full" />
+            <div className="grid flex-1 gap-2">
+              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-4 w-1/2" />
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="alert"
+          title="Alert"
+          description="Inline feedback on a tinted surface. Title says what happened, description says what to do."
+        >
+          <Alert variant="success" role="status" className="max-w-md">
+            <CircleCheck />
+            <AlertTitle>Deploy finished</AlertTitle>
+            <AlertDescription>Version 0.1.0 is live in production.</AlertDescription>
+          </Alert>
         </Preview>
       </section>
     </div>

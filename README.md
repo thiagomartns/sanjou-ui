@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/sanjou-mark-dark.svg">
+    <img src=".github/assets/sanjou-mark.svg" alt="Sanjou UI" width="72" height="72">
+  </picture>
+</p>
+
 # Sanjou UI
 
 A quiet design system for dense product interfaces — in the register of Linear and Vercel. Radix primitives, Tailwind CSS 4, OKLCH tokens, distributed **shadcn-style**: the component code is copied into your project by the shadcn CLI and is yours to edit.

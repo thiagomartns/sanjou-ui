@@ -237,6 +237,49 @@ export function buildFigma(palette, format) {
   return files;
 }
 
+// Sanjou mark: an arc in ink and a triangle in indigo (48×48 grid).
+const MARK_ARC = 'M5 43 A31 31 0 0 1 36 12 A27 27 0 0 0 16 43 Z';
+const MARK_TRIANGLE = 'M28 43 L36 30 L44 43 Z';
+
+/** Ink + accent of the mark per theme. Dark uses brand-text: indigo-9 is too dim on a dark page. */
+export function logoColors(palette, theme) {
+  const t = theme === 'light' ? 0 : 1;
+  const accent = theme === 'light' ? SEMANTIC.brand : SEMANTIC['brand-text'];
+  return {
+    ink: resolve(palette, theme, SEMANTIC.foreground[t]),
+    accent: resolve(palette, theme, accent[t]),
+  };
+}
+
+/** Static mark for one theme (README, docs). */
+export function buildLogo(palette, theme) {
+  const { ink, accent } = logoColors(palette, theme);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <path d="${MARK_ARC}" fill="${ink}"/>
+  <path d="${MARK_TRIANGLE}" fill="${accent}"/>
+</svg>
+`;
+}
+
+/** Favicon that follows the browser color scheme. */
+export function buildFavicon(palette) {
+  const light = logoColors(palette, 'light');
+  const dark = logoColors(palette, 'dark');
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <style>
+    .ink { fill: ${light.ink}; }
+    .accent { fill: ${light.accent}; }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: ${dark.ink}; }
+      .accent { fill: ${dark.accent}; }
+    }
+  </style>
+  <path class="ink" d="${MARK_ARC}"/>
+  <path class="accent" d="${MARK_TRIANGLE}"/>
+</svg>
+`;
+}
+
 /** shadcn registry item that installs the theme into a consumer's globals.css. */
 export function buildRegistryTheme(palette) {
   const vars = (theme) => {
