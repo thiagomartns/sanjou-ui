@@ -1,4 +1,4 @@
-import { CircleCheck, Copy, Search } from 'lucide-react';
+import { CircleCheck, Copy, MoreHorizontal, Search, Trash2 } from 'lucide-react';
 
 import { Code } from '@/components/site/code';
 import { Preview } from '@/components/site/preview';
@@ -25,6 +25,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/registry/sanjou/ui/dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/registry/sanjou/ui/dropdown-menu';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/popover';
@@ -298,6 +305,29 @@ export default function Home() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
+        </Preview>
+
+        <Preview
+          name="dropdown-menu"
+          title="Dropdown menu"
+          description="Actions or options behind a trigger. Arrow keys move, Escape closes."
+        >
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Project actions">
+                <MoreHorizontal />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>Rename</DropdownMenuItem>
+              <DropdownMenuItem>Duplicate</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem variant="destructive">
+                <Trash2 />
+                Delete project
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </Preview>
 
         <Preview
