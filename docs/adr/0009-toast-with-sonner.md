@@ -23,5 +23,5 @@ O Toast do Sanjou é um wrapper `Toaster` sobre o `sonner` (`registry/sanjou/ui/
 
 - Quem instala o item ganha a dependência `sonner` e monta um `<Toaster />` perto da raiz. A API de disparo é a do `sonner`, documentada fora daqui.
 - O `sonner` injeta CSS próprio com seletores de atributo. Sobrescrever descrição, botões e sombra exige classes com `!`, e uma atualização do `sonner` pode mudar esses seletores: conferir as stories do Toast a cada bump.
-- O `sonner` guarda os toasts num store de módulo, e todo `Toaster` sem `id` mostra todos os toasts. Várias instâncias na mesma página (como a página Docs do Storybook) exigem `id` no `Toaster` e `toasterId` em `toast()`. As stories também limpam o store num `beforeEach` (`toast.dismiss()`).
+- O `sonner` guarda os toasts num store de módulo, e todo `Toaster` sem `id` mostra todos os toasts. Várias instâncias na mesma página (como a página Docs do Storybook) exigem `id` no `Toaster` e `toasterId` em `toast()`. No Storybook, as stories do Toast rodam em iframe na página Docs (`docs.story.inline: false`), e cada exemplo tem o próprio viewport e o próprio store. No Vitest, um `beforeEach` limpa o store (`toast.dismiss()`).
 - Os toasts entram com animação de opacidade. Testes esperam a visibilidade com `waitFor`.

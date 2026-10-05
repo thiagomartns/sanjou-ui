@@ -8,10 +8,14 @@ import { Toaster } from '@/registry/sanjou/ui/sonner';
 const meta = {
   title: 'Components/Toast',
   component: Toaster,
-  parameters: { layout: 'centered' },
-  // Sonner keeps toasts in a module-level store: clear it so one story's toasts never
-  // show up in the next. The Docs page renders every story at once, so each story also has
-  // its own <Toaster id> and fires with the matching toasterId.
+  parameters: {
+    layout: 'centered',
+    // The toaster is position: fixed and sonner keeps toasts in a module-level store. In an
+    // iframe, each Docs example gets its own viewport (toasts land in its bottom corner) and
+    // its own store (the top example and Default no longer share toasts).
+    docs: { story: { inline: false, height: '320px' } },
+  },
+  // Vitest runs the stories one after another in the same document: start each one empty.
   beforeEach: () => {
     toast.dismiss();
   },
@@ -27,7 +31,6 @@ function ArchiveDemo({ onUndo }: { onUndo: () => void }) {
         variant="outline"
         onClick={() =>
           toast('Project archived', {
-            toasterId: 'default',
             description: 'It stays read-only until you restore it.',
             action: { label: 'Undo', onClick: onUndo },
           })
@@ -35,7 +38,7 @@ function ArchiveDemo({ onUndo }: { onUndo: () => void }) {
       >
         Archive project
       </Button>
-      <Toaster id="default" />
+      <Toaster />
     </>
   );
 }
@@ -66,35 +69,25 @@ export const Default: StoryObj<typeof ArchiveDemo> = {
 };
 
 export const Types: Story = {
+  // Expanded stacks need room above the toasts so they do not cover the buttons.
+  parameters: { docs: { story: { inline: false, height: '440px' } } },
   render: () => (
     <>
       <div className="flex flex-wrap gap-2">
-        <Button
-          variant="outline"
-          onClick={() => toast.success('Deploy finished', { toasterId: 'types' })}
-        >
+        <Button variant="outline" onClick={() => toast.success('Deploy finished')}>
           Show success
         </Button>
-        <Button
-          variant="outline"
-          onClick={() => toast.info('A new version is available', { toasterId: 'types' })}
-        >
+        <Button variant="outline" onClick={() => toast.info('A new version is available')}>
           Show info
         </Button>
-        <Button
-          variant="outline"
-          onClick={() => toast.warning('Your trial ends in 3 days', { toasterId: 'types' })}
-        >
+        <Button variant="outline" onClick={() => toast.warning('Your trial ends in 3 days')}>
           Show warning
         </Button>
-        <Button
-          variant="outline"
-          onClick={() => toast.error('Deploy failed', { toasterId: 'types' })}
-        >
+        <Button variant="outline" onClick={() => toast.error('Deploy failed')}>
           Show error
         </Button>
       </div>
-      <Toaster id="types" expand />
+      <Toaster expand />
     </>
   ),
   play: async ({ canvas, canvasElement, userEvent }) => {
@@ -113,20 +106,18 @@ export const Types: Story = {
 };
 
 export const RichColors: Story = {
+  // Expanded stacks need room above the toasts so they do not cover the buttons.
+  parameters: { docs: { story: { inline: false, height: '440px' } } },
   render: () => (
     <>
       <div className="flex flex-wrap gap-2">
-        <Button
-          variant="outline"
-          onClick={() => toast.success('Deploy finished', { toasterId: 'rich-colors' })}
-        >
+        <Button variant="outline" onClick={() => toast.success('Deploy finished')}>
           Show success
         </Button>
         <Button
           variant="outline"
           onClick={() =>
             toast.error('Deploy failed', {
-              toasterId: 'rich-colors',
               description: 'The build step exited with code 1.',
             })
           }
@@ -134,7 +125,7 @@ export const RichColors: Story = {
           Show error
         </Button>
       </div>
-      <Toaster id="rich-colors" richColors expand />
+      <Toaster richColors expand />
     </>
   ),
   play: async ({ canvas, canvasElement, userEvent }) => {
