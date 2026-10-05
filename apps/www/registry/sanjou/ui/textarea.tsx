@@ -11,7 +11,7 @@ function Textarea({ className, ...props }: ComponentProps<'textarea'>) {
         'placeholder:text-muted-foreground hover:border-gray-10',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
         'aria-invalid:border-destructive',
-        'disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-60',
+        'disabled:pointer-events-none disabled:bg-muted disabled:opacity-50',
         className,
       )}
       {...props}
