@@ -36,6 +36,13 @@ import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/popover';
 import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/registry/sanjou/ui/select';
 import { Separator } from '@/registry/sanjou/ui/separator';
 import { Skeleton } from '@/registry/sanjou/ui/skeleton';
 import { Switch } from '@/registry/sanjou/ui/switch';
@@ -352,6 +359,26 @@ export default function Home() {
               </div>
             </PopoverContent>
           </Popover>
+        </Preview>
+
+        <Preview
+          name="select"
+          title="Select"
+          description="Picks one option from a list. The trigger lines up with Input in forms."
+        >
+          <div className="grid w-full max-w-xs gap-2">
+            <Label htmlFor="preview-region">Region</Label>
+            <Select>
+              <SelectTrigger id="preview-region">
+                <SelectValue placeholder="Choose a region" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gru">São Paulo (gru1)</SelectItem>
+                <SelectItem value="iad">Washington (iad1)</SelectItem>
+                <SelectItem value="fra">Frankfurt (fra1)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </Preview>
 
         <Preview
