@@ -46,7 +46,7 @@ Select Send invite with the form empty to see the errors.
 
 <Canvas of={FormStories.Errors} />
 
-On submit, the first invalid field receives focus, and each message appears under its field. Write messages that say how to fix the value, such as "Use at least 3 characters", not only that it is wrong. For a failure that comes from the server, such as wrong credentials, show an Alert above the fields and mark them invalid with `form.setError` (see Patterns/Sign in).
+On submit, the first invalid field receives focus, and each message appears under its field. The label keeps its color: the red border and the message carry the error. Write messages that say how to fix the value, such as "Use at least 3 characters", not only that it is wrong. For a failure that comes from the server, such as wrong credentials, show an Alert above the fields and mark them invalid with `form.setError` (see Patterns/Sign in).
 
 ## When to validate
 

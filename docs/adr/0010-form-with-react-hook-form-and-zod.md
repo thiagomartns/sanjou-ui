@@ -23,5 +23,5 @@ O Form do Sanjou (`registry/sanjou/ui/form.tsx`, item `form`) segue o `form.tsx`
 
 - Quem instala o item ganha `react-hook-form`, `zod` e `@hookform/resolvers`. Quem não usa `zod` pode trocar o resolver sem mudar o componente.
 - Os controles do Radix precisam de ligação explícita no `render` do `FormField`: `value`/`onValueChange` no Select, `checked`/`onCheckedChange` no Checkbox e no Switch. O Select usa `value ?? ''` para continuar controlado e mostrar o placeholder.
-- O `FormMessage` mostra o erro do campo; um erro vazio (como um erro do servidor apontado pelo `setError` sem mensagem) marca o campo inválido sem mostrar texto. O pattern `Sign in` usa isso, com o Alert levando a mensagem.
+- O `FormMessage` mostra o erro do campo; um erro vazio (como um erro do servidor apontado pelo `setError` sem mensagem) marca o campo inválido sem mostrar texto. O `aria-describedby` só aponta para a descrição e a mensagem que estão renderizadas: cada uma se registra no `FormItem` ao montar. O pattern `Sign in` usa isso, com o Alert levando a mensagem.
 - No envio, o `react-hook-form` move o foco para o primeiro campo inválido. As stories testam esse comportamento.

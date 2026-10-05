@@ -206,5 +206,7 @@ export const WithError: Story = {
     await waitFor(() =>
       expect(canvas.getByLabelText('Email')).toHaveAttribute('aria-invalid', 'true'),
     );
+    // The server error has no field message, so nothing to reference.
+    await expect(canvas.getByLabelText('Email')).not.toHaveAttribute('aria-describedby');
   },
 };
