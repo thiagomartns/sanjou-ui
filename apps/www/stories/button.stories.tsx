@@ -20,7 +20,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Stories that assert on onClick get their own spy: the meta-level one is shared by every
+// story in the file, and a click from one story can land in another's assertion on slow CI.
 export const Primary: Story = {
+  args: { onClick: fn() },
   play: async ({ args, canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole('button', { name: 'Create project' }));
     await expect(args.onClick).toHaveBeenCalledOnce();
@@ -70,7 +73,7 @@ export const Sizes: Story = {
 };
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { disabled: true, onClick: fn() },
   play: async ({ args, canvas, userEvent }) => {
     const button = canvas.getByRole('button');
     await expect(button).toBeDisabled();
