@@ -626,6 +626,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "FieldSet",
+      "description": "Group related fields under a heading: FieldSet (a native fieldset; disabled disables every control inside) and FieldLegend (variant legend for sections, label for a radio group).",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

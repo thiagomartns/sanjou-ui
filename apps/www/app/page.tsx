@@ -34,6 +34,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/registry/sanjou/ui/dropdown-menu';
+import { FieldLegend, FieldSet } from '@/registry/sanjou/ui/field';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/popover';
@@ -286,6 +287,24 @@ export default function Home() {
               </div>
             ))}
           </RadioGroup>
+        </Preview>
+
+        <Preview
+          name="field"
+          title="FieldSet"
+          description="A heading for a group of fields, announced as the group's name."
+        >
+          <FieldSet className="w-full max-w-sm">
+            <FieldLegend>Billing address</FieldLegend>
+            <div className="grid gap-1.5">
+              <Label htmlFor="preview-street">Street</Label>
+              <Input id="preview-street" autoComplete="street-address" />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="preview-city">City</Label>
+              <Input id="preview-city" autoComplete="address-level2" />
+            </div>
+          </FieldSet>
         </Preview>
 
         <Preview
