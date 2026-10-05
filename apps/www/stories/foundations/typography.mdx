@@ -1,0 +1,28 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as TypographyStories from './typography.stories';
+
+<Meta of={TypographyStories} />
+
+# Typography
+
+Sanjou UI uses Geist for interface text and Geist Mono for code. The scale is compact, tuned for dense screens: body text is 14px.
+
+## Families and weights
+
+<Canvas of={TypographyStories.Families} />
+
+Three weights are enough: regular for text, medium for labels and emphasis, semibold for headings. Avoid bold.
+
+## Scale
+
+<Canvas of={TypographyStories.Scale} />
+
+Each size sets its own line height, and sizes from `xl` up tighten the letter spacing. The middle column shows font size and line height in pixels.
+
+- `base` (14px) is the default for interface text.
+- `sm` and `xs` are for secondary text: descriptions, captions and metadata.
+- `md` (16px) is for longer reading, such as intros and documentation.
+- `lg` and up are for headings, in semibold.
+
+Inside registry components, write `text-[1rem]` instead of `text-md`. In projects that consume the registry, `tailwind-merge` may read `text-md` as a color and drop it.

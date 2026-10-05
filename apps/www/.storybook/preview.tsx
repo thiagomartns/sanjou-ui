@@ -14,6 +14,17 @@ const preview: Preview = {
     a11y: { test: 'error' },
     backgrounds: { disable: true },
     docs: { container: ThemedDocsContainer },
+    options: {
+      storySort: {
+        order: [
+          'Introduction',
+          'Foundations',
+          ['Color', 'Typography', 'Radius and spacing', 'Dark mode'],
+          'Components',
+          'Patterns',
+        ],
+      },
+    },
   },
   decorators: [
     withThemeByClassName({

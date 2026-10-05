@@ -7,12 +7,10 @@ import { sanjouDark, sanjouLight } from './sanjou-theme';
 type Globals = { theme?: string };
 
 function initialTheme(context: DocsContainerProps['context']) {
-  try {
-    return (context.getStoryContext(context.storyById()).globals as Globals).theme;
-  } catch {
-    // MDX pages without a CSF file have no primary story to read globals from.
-    return undefined;
-  }
+  // The store holds the toolbar globals for every Docs page, including MDX pages
+  // with no stories of their own. `store` is not in the public DocsContext type.
+  const { store } = context as unknown as { store?: { userGlobals?: { get(): Globals } } };
+  return store?.userGlobals?.get().theme;
 }
 
 /** Switches the Docs page theme with the toolbar theme toggle (addon-themes `theme` global). */
