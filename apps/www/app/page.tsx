@@ -15,6 +15,16 @@ import {
   CardTitle,
 } from '@/registry/sanjou/ui/card';
 import { Checkbox } from '@/registry/sanjou/ui/checkbox';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/registry/sanjou/ui/dialog';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/popover';
@@ -260,6 +270,34 @@ export default function Home() {
               </div>
             ))}
           </RadioGroup>
+        </Preview>
+
+        <Preview
+          name="dialog"
+          title="Dialog"
+          description="Modal window for focused tasks and confirmations. Traps focus until closed."
+        >
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="destructive">Delete project</Button>
+            </DialogTrigger>
+            <DialogContent role="alertdialog" showCloseButton={false} className="sm:max-w-md">
+              <DialogHeader className="pr-0">
+                <DialogTitle>Delete this project?</DialogTitle>
+                <DialogDescription>
+                  This removes all deployments and environment variables. You cannot undo this.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <DialogClose asChild>
+                  <Button variant="destructive">Delete project</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </Preview>
 
         <Preview
