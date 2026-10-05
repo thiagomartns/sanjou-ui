@@ -22,3 +22,7 @@ Produção (npm, Storybook no GitHub Pages e o site/registry quando houver hospe
 - O que está em produção corresponde sempre a uma tag `vX.Y.Z`.
 - Se a Vercel for conectada, o deploy automático de produção precisa ser desligado e trocado por `vercel deploy --prod` ou deploy hook na release.
 - O gatilho do workflow do Storybook previsto no plano 01 precisa mudar de `push` para a release.
+
+## Exceção temporária (2026-10-05)
+
+Até a release `0.1.0`, o Storybook é publicado a cada push na `develop`, porque o projeto é de estudo e a primeira release depende da automação da npm. Na `0.1.0`, o gatilho de `push` sai do `storybook.yml` e volta a valer só a release. O site e o registry não entram na exceção.
