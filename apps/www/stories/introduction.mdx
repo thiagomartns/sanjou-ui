@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Sanjou UI
+
+A quiet design system for dense product interfaces. It is built on Radix primitives, Tailwind CSS 4 and OKLCH tokens, and distributed shadcn-style: the shadcn CLI copies the component code into your project, and from then on the code is yours to edit.
+
+## Principles
+
+- **Neutral first.** The main action is ink, not color. Indigo is reserved for brand moments, links and focus.
+- **Borders, not shadows.** Shadows only on what floats.
+- **Zero runtime.** No provider and no JavaScript theme: dark mode is a `.dark` class.
+- **Server Components by default.** Only components with real interactivity carry `'use client'`.
+
+## Install
+
+Add the registry to `components.json`:
+
+```jsonc
+{
+  "registries": {
+    "@sanjou": "https://sanjou-ui.vercel.app/r/{name}.json",
+  },
+}
+```
+
+Add the theme, then the components you need:
+
+```bash
+npx shadcn@latest add @sanjou/theme
+npx shadcn@latest add @sanjou/button @sanjou/input @sanjou/label
+```
+
+The theme item writes the tokens into your `globals.css`. To use the tokens without the CLI, install `@sanjou/tokens` and import its stylesheet after Tailwind:
+
+```css
+@import 'tailwindcss';
+@import '@sanjou/tokens/sanjou.css';
+```
+
+The tokens expect Geist. In Next.js, load it with `next/font/google` and the variables `--font-geist-sans` and `--font-geist-mono`.
+
+## How this Storybook is organized
+
+- **Foundations:** color, typography, radius and spacing, and dark mode.
+- **Components:** one Docs page per component, with its props and controls, followed by its stories.
+- **Patterns:** components composed into real screens, such as a sign-in form and a settings page.
+
+Use the theme toggle in the toolbar to switch between light and dark. Every story also runs as a browser test with an accessibility check (axe), in both themes.
+
+## Links
+
+- [Source code on GitHub](https://github.com/thiagomartns/sanjou-ui)
+- [Architecture decisions](https://github.com/thiagomartns/sanjou-ui/tree/main/docs/adr)

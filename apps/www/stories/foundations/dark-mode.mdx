@@ -1,0 +1,47 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+
+import { Badge } from '@/registry/sanjou/ui/badge';
+import { Button } from '@/registry/sanjou/ui/button';
+
+<Meta title="Foundations/Dark mode" />
+
+# Dark mode
+
+Dark mode is a class, not a runtime. Add `dark` to `<html>` (or to any container) and every semantic token switches to its dark value. There is no theme provider and no JavaScript in the components.
+
+<Unstyled>
+  <div className="my-6 grid gap-4 sm:grid-cols-2">
+    <div className="flex flex-wrap items-center gap-3 rounded-lg border border-border bg-background p-6 text-foreground">
+      <Button>Save changes</Button>
+      <Button variant="outline">Cancel</Button>
+      <Badge>Light</Badge>
+    </div>
+    <div className="dark flex flex-wrap items-center gap-3 rounded-lg border border-border bg-background p-6 text-foreground">
+      <Button>Save changes</Button>
+      <Button variant="outline">Cancel</Button>
+      <Badge>Dark</Badge>
+    </div>
+  </div>
+</Unstyled>
+
+## How it works
+
+The `dark` variant matches `.dark` and its descendants. Under `.dark`, the stylesheet redefines the same semantic variables and sets `color-scheme: dark`, so native controls and scrollbars follow. Components keep the same class names in both themes: `bg-background` is white in light mode and gray 1 in dark mode.
+
+The dark scales are not the light scales inverted. Each step has its own tuned lightness, and every contrast pair is checked in both themes.
+
+## Switching themes
+
+Choosing the theme and remembering it is up to your app. In Next.js, `next-themes` with `attribute="class"` does both. Without a library, set the class before the first paint so the page does not flash:
+
+```html
+<script>
+  if (matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.classList.add('dark');
+  }
+</script>
+```
+
+## In this Storybook
+
+The theme toggle in the toolbar adds `dark` to the preview. The test run renders every story in both themes and checks each one with axe.

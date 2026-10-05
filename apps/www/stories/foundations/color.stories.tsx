@@ -7,6 +7,8 @@ const steps = Array.from({ length: 12 }, (_, i) => i + 1);
 
 const meta = {
   title: 'Foundations/Color',
+  // The Docs page is color.mdx.
+  tags: ['!autodocs'],
   // Swatch captions sit on arbitrary colors by design; they are documentation, not UI.
   parameters: { a11y: { test: 'todo' }, layout: 'fullscreen' },
 } satisfies Meta;
@@ -48,33 +50,6 @@ export const Semantic: Story = {
             style={{ background: `var(--${name})` }}
           />
           <span className="font-mono text-xs">{name}</span>
-        </div>
-      ))}
-    </div>
-  ),
-};
-
-// Class names must be static strings so Tailwind can find them.
-const typeScale = [
-  ['5xl', 'text-5xl font-semibold'],
-  ['4xl', 'text-4xl font-semibold'],
-  ['3xl', 'text-3xl font-semibold'],
-  ['2xl', 'text-2xl font-semibold'],
-  ['xl', 'text-xl font-semibold'],
-  ['lg', 'text-lg font-semibold'],
-  ['md', 'text-md'],
-  ['base', 'text-base'],
-  ['sm', 'text-sm'],
-  ['xs', 'text-xs font-medium'],
-] as const;
-
-export const Typography: Story = {
-  render: () => (
-    <div className="grid gap-4 p-6">
-      {typeScale.map(([size, className]) => (
-        <div key={size} className="grid grid-cols-[64px_1fr] items-baseline gap-4">
-          <span className="font-mono text-xs text-muted-foreground">{size}</span>
-          <span className={className}>Interfaces that do not shout</span>
         </div>
       ))}
     </div>

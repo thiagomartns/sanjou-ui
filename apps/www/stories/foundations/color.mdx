@@ -1,0 +1,47 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as ColorStories from './color.stories';
+
+<Meta of={ColorStories} />
+
+# Color
+
+Every color comes from five OKLCH scales of twelve steps: gray, indigo, green, amber and red. Each step has its own light and dark value, generated from a single config file. Components never use a scale step directly: they use semantic tokens, which point to steps.
+
+## Scales
+
+<Canvas of={ColorStories.Scales} />
+
+Each step has a job:
+
+| Steps | Use                                                         |
+| ----- | ----------------------------------------------------------- |
+| 1–2   | App backgrounds                                             |
+| 3–5   | Component backgrounds: rest, hover and pressed              |
+| 6–8   | Borders and separators, from subtle to strong               |
+| 9–10  | Solid fills, such as the brand and status colors, and hover |
+| 11    | Secondary text                                              |
+| 12    | Primary text                                                |
+
+Gray carries the interface. Indigo is the brand color, kept for links, focus and brand moments. Green, amber and red are for status.
+
+## Semantic tokens
+
+<Canvas of={ColorStories.Semantic} />
+
+Names follow shadcn/ui, so components from that ecosystem work without changes. Each `-foreground` token is the text color for the background of the same name.
+
+| Group    | Tokens                                                   | Use                                                          |
+| -------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| Surfaces | `background`, `card`, `popover`, `muted`                 | Page, raised panels, floating layers and quiet areas         |
+| Text     | `foreground`, `muted-foreground`                         | Primary and secondary text                                   |
+| Actions  | `primary`, `secondary`, `accent`, `destructive`          | The main action (ink), secondary actions, hover, destructive |
+| Lines    | `border`, `input`, `ring`                                | Separators, field borders and the focus outline              |
+| Brand    | `brand`, `brand-subtle`, `brand-text`                    | Brand fills, tinted backgrounds and links                    |
+| Status   | `success-*`, `warning-*`, `danger-subtle`, `danger-text` | Feedback: a solid fill, a tinted background and its text     |
+
+Use `primary` for the main action, not `brand`: the main action is ink. Reach for a raw step (`bg-gray-4`, `bg-indigo-10`) only for a hover or pressed state that has no semantic token.
+
+## Contrast
+
+Every token build checks the text and background pairs that components use, in both themes. Body text must reach 7:1 against the page, other text 4.5:1, and the focus ring and field borders 3:1. The build fails when a pair falls below its minimum. The full report is in [`packages/tokens/CONTRAST.md`](https://github.com/thiagomartns/sanjou-ui/blob/main/packages/tokens/CONTRAST.md).
