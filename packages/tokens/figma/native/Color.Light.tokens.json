@@ -1307,7 +1307,7 @@
   },
   "input": {
     "$type": "color",
-    "$value": "{scale.gray.8}",
+    "$value": "{scale.gray.9}",
     "$extensions": {
       "com.figma.scopes": [
         "STROKE_COLOR",
