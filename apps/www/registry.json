@@ -109,6 +109,7 @@
           "color-warning-text": "var(--warning-text)",
           "color-danger-subtle": "var(--danger-subtle)",
           "color-danger-text": "var(--danger-text)",
+          "color-overlay": "var(--overlay)",
           "text-xs": "0.75rem",
           "text-xs--line-height": "1rem",
           "text-sm": "0.8125rem",
@@ -229,6 +230,7 @@
           "warning-text": "var(--amber-11)",
           "danger-subtle": "var(--red-3)",
           "danger-text": "var(--red-11)",
+          "overlay": "color-mix(in oklch, var(--gray-12) 50%, transparent)",
           "radius": "0.5rem"
         },
         "dark": {
@@ -324,7 +326,8 @@
           "warning-subtle": "var(--amber-3)",
           "warning-text": "var(--amber-11)",
           "danger-subtle": "var(--red-3)",
-          "danger-text": "var(--red-11)"
+          "danger-text": "var(--red-11)",
+          "overlay": "color-mix(in oklch, #000000 60%, transparent)"
         }
       }
     },

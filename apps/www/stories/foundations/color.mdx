@@ -31,14 +31,15 @@ Gray carries the interface. Indigo is the brand color, kept for links, focus and
 
 Names follow shadcn/ui, so components from that ecosystem work without changes. Each `-foreground` token is the text color for the background of the same name.
 
-| Group    | Tokens                                                   | Use                                                          |
-| -------- | -------------------------------------------------------- | ------------------------------------------------------------ |
-| Surfaces | `background`, `card`, `popover`, `muted`                 | Page, raised panels, floating layers and quiet areas         |
-| Text     | `foreground`, `muted-foreground`                         | Primary and secondary text                                   |
-| Actions  | `primary`, `secondary`, `accent`, `destructive`          | The main action (ink), secondary actions, hover, destructive |
-| Lines    | `border`, `input`, `ring`                                | Separators, field borders and the focus outline              |
-| Brand    | `brand`, `brand-subtle`, `brand-text`                    | Brand fills, tinted backgrounds and links                    |
-| Status   | `success-*`, `warning-*`, `danger-subtle`, `danger-text` | Feedback: a solid fill, a tinted background and its text     |
+| Group    | Tokens                                                   | Use                                                                                                    |
+| -------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Surfaces | `background`, `card`, `popover`, `muted`                 | Page, raised panels, floating layers and quiet areas                                                   |
+| Text     | `foreground`, `muted-foreground`                         | Primary and secondary text                                                                             |
+| Actions  | `primary`, `secondary`, `accent`, `destructive`          | The main action (ink), secondary actions, hover, destructive                                           |
+| Lines    | `border`, `input`, `ring`                                | Separators, field borders and the focus outline                                                        |
+| Brand    | `brand`, `brand-subtle`, `brand-text`                    | Brand fills, tinted backgrounds and links                                                              |
+| Status   | `success-*`, `warning-*`, `danger-subtle`, `danger-text` | Feedback: a solid fill, a tinted background and its text                                               |
+| Overlay  | `overlay`                                                | The scrim behind modal dialogs. It is translucent: ink at 50% in light mode, black at 60% in dark mode |
 
 Use `primary` for the main action, not `brand`: the main action is ink. Reach for a raw step (`bg-gray-4`, `bg-indigo-10`) only for a hover or pressed state that has no semantic token.
 

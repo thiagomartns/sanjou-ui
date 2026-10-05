@@ -895,5 +895,15 @@
         "STROKE_COLOR"
       ]
     }
+  },
+  "overlay": {
+    "$type": "color",
+    "$value": "#1e232d80",
+    "$extensions": {
+      "com.figma.scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ]
+    }
   }
 }

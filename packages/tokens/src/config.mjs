@@ -37,7 +37,10 @@ export const SCALE_DEFS = {
 };
 
 const W = '#ffffff';
-/** Semantic tokens: [light ref, dark ref]. Names match shadcn/ui. */
+/**
+ * Semantic tokens: [light ref, dark ref]. Names match shadcn/ui.
+ * A ref is a scale step (`gray.12`) or a hex color, with an optional alpha in percent (`/50`).
+ */
 export const SEMANTIC = {
   background: [W, 'gray.1'],
   foreground: ['gray.12', 'gray.12'],
@@ -72,6 +75,8 @@ export const SEMANTIC = {
   'warning-text': ['amber.11', 'amber.11'],
   'danger-subtle': ['red.3', 'red.3'],
   'danger-text': ['red.11', 'red.11'],
+  // The scrim behind modal dialogs. Not a text background, so it has no contrast rule.
+  overlay: ['gray.12/50', '#000000/60'],
 };
 
 /** Pairs checked on every build: [fg, bg, minimum ratio]. */
