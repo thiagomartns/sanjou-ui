@@ -7,6 +7,13 @@ import { Switch } from '@/registry/sanjou/ui/switch';
 const meta = {
   title: 'Components/Switch',
   component: Switch,
+  parameters: {
+    docs: {
+      description: {
+        component: `Turns a setting on or off with immediate effect. If the change only applies after a Save button, use Checkbox. Pair it with a \`Label\` that names the setting, not its state.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Switch>;
 
 export default meta;

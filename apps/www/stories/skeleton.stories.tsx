@@ -6,6 +6,15 @@ import { Skeleton } from '@/registry/sanjou/ui/skeleton';
 const meta = {
   title: 'Components/Skeleton',
   component: Skeleton,
+  parameters: {
+    docs: {
+      description: {
+        component: `A placeholder that holds the layout while content loads. Match the shape and size of the content it replaces, so the page does not jump when it arrives.
+
+Skeleton is hidden from assistive tech: mark the loading region with \`aria-busy\` or \`role="status"\` and describe it in text. The pulse stops when the user prefers reduced motion.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Skeleton>;
 
 export default meta;

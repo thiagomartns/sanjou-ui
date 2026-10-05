@@ -45,7 +45,14 @@ function ProjectsEmpty({ onCreate }: ProjectsEmptyProps) {
 const meta = {
   title: 'Patterns/Empty state',
   component: ProjectsEmpty,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `What a list shows before it has any items: a heading, what the list is for, and the action that creates the first item.`,
+      },
+    },
+    layout: 'centered',
+  },
   args: { onCreate: fn() },
 } satisfies Meta<typeof ProjectsEmpty>;
 

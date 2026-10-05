@@ -24,7 +24,16 @@ import {
 const meta = {
   title: 'Components/DropdownMenu',
   component: DropdownMenu,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `A list of actions or options opened from a button, such as a row's actions or an account menu. To choose a value in a form, use Select.
+
+Group items with labels and separators, and use checkbox or radio items for view options. Items with \`variant="destructive"\` delete things; keep them last. Arrow keys move between items, and typing jumps to a matching item.`,
+      },
+    },
+    layout: 'centered',
+  },
 } satisfies Meta<typeof DropdownMenu>;
 
 export default meta;

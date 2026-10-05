@@ -9,7 +9,14 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/po
 const meta = {
   title: 'Components/Popover',
   component: Popover,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `Floating content anchored to a trigger, such as a filter panel or a short form. It does not block the page, and it closes on Escape or a click outside. For a hint on hover, use Tooltip; for a task that must be finished or dismissed, use Dialog.`,
+      },
+    },
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Popover>;
 
 export default meta;

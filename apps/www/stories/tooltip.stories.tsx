@@ -8,7 +8,14 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/registry/sanjou/ui/to
 const meta = {
   title: 'Components/Tooltip',
   component: Tooltip,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `A short hint shown on hover or focus, for icon-only buttons and truncated text. Keep it to a few words, and never put essential information or interactive content in it: touch screens cannot hover. It opens after 300ms and includes its own provider, so it works without app-level setup.`,
+      },
+    },
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

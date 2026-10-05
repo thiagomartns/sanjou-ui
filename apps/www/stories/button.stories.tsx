@@ -7,6 +7,22 @@ import { Button } from '@/registry/sanjou/ui/button';
 const meta = {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: `Triggers an action. Give each view one \`primary\` button for its main action; the other actions take quieter variants.
+
+- \`primary\`: the main action. It is ink, not color.
+- \`secondary\`: other actions next to the primary one.
+- \`outline\`: actions that need a clear edge, such as Cancel in a dialog.
+- \`ghost\`: toolbar and icon actions, where a fill would be noise.
+- \`brand\`: rare brand moments, such as the call to action of an empty state.
+- \`destructive\`: actions that delete or cannot be undone, usually after a confirmation.
+
+\`md\` is the default size. Use \`sm\` in dense tables and toolbars, \`lg\` in standalone forms, and \`icon\` for icon-only buttons, which need an \`aria-label\`. With \`asChild\`, a link gets button styles and keeps link semantics.`,
+      },
+    },
+  },
   args: { children: 'Create project', onClick: fn() },
   argTypes: {
     variant: {

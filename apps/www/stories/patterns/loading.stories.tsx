@@ -50,7 +50,14 @@ function SettingsSkeleton() {
 const meta = {
   title: 'Patterns/Loading',
   component: SettingsSkeleton,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `The loading state of the Settings pattern. Skeletons mirror its layout, so the content replaces them without a shift, and the card is announced as a loading status.`,
+      },
+    },
+    layout: 'centered',
+  },
 } satisfies Meta<typeof SettingsSkeleton>;
 
 export default meta;

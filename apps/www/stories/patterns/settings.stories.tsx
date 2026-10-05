@@ -184,7 +184,14 @@ function NotificationSettings({ onSave }: NotificationSettingsProps) {
 const meta = {
   title: 'Patterns/Settings',
   component: NotificationSettings,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `A settings form in a Card: switches for notifications, a radio group and a select for the activity digest, a textarea for the email signature, and Save in the footer. Discarding unsaved changes asks for confirmation in a Dialog.`,
+      },
+    },
+    layout: 'centered',
+  },
   args: { onSave: fn() },
 } satisfies Meta<typeof NotificationSettings>;
 

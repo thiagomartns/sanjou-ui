@@ -32,7 +32,16 @@ const withToastFrame: Decorator = (Story, context) => {
 const meta = {
   title: 'Components/Toast',
   component: Toaster,
-  parameters: { layout: 'padded' },
+  parameters: {
+    docs: {
+      description: {
+        component: `A brief message about something that just happened, such as "Project archived". Toasts go away on their own, so never put the only copy of important information in one: use Alert for messages that must stay.
+
+Mount \`Toaster\` once, near the root, and call \`toast()\` from \`sonner\`. \`toast.success\`, \`toast.info\`, \`toast.warning\` and \`toast.error\` add an icon, and \`richColors\` also tints the toast. Add an action, such as Undo, when the change can be reversed.`,
+      },
+    },
+    layout: 'padded',
+  },
   decorators: [withToastFrame],
   // Sonner keeps toasts in a module-level store. Every demo passes its own useId() as the
   // Toaster id and toasterId, so examples rendered together (the Docs page shows the first

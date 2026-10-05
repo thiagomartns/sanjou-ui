@@ -88,7 +88,14 @@ function SignInForm({ onSubmit, error }: SignInFormProps) {
 const meta = {
   title: 'Patterns/Sign in',
   component: SignInForm,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `A sign-in form with labeled fields and a submit button. A failed attempt shows an Alert above the fields.`,
+      },
+    },
+    layout: 'centered',
+  },
   args: { onSubmit: fn() },
 } satisfies Meta<typeof SignInForm>;
 
