@@ -17,6 +17,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/registry/sanjou/ui/t
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
+  parameters: {
+    docs: {
+      description: {
+        component: `Switches between views of the same subject inside a page, such as Overview and Activity. Keep tabs few and their labels short. Do not use tabs for the steps of a sequence or to move between pages. Arrow keys move between tabs.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Tabs>;
 
 export default meta;

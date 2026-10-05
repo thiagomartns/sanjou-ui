@@ -7,6 +7,19 @@ import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert'
 const meta = {
   title: 'Components/Alert',
   component: Alert,
+  parameters: {
+    docs: {
+      description: {
+        component: `A message that stays in the page, next to the content it is about. For short-lived feedback after an action, use Toast.
+
+- \`neutral\`: general information.
+- \`brand\`: tips and announcements.
+- \`success\`, \`warning\` and \`danger\`: the result or the risk of something on the page.
+
+Alert renders with \`role="alert"\`, so screen readers announce it as soon as it appears. Override \`role\` for messages that are part of the page from the start.`,
+      },
+    },
+  },
   args: { variant: 'neutral' },
   argTypes: {
     variant: {

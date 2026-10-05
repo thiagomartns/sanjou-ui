@@ -7,6 +7,13 @@ import { Textarea } from '@/registry/sanjou/ui/textarea';
 const meta = {
   title: 'Components/Textarea',
   component: Textarea,
+  parameters: {
+    docs: {
+      description: {
+        component: `A multi-line text field for comments, descriptions and messages. It works like Input: pair it with a \`Label\`, set \`aria-invalid\` to show an error and link the message with \`aria-describedby\`.`,
+      },
+    },
+  },
   decorators: [(Story) => <div className="grid max-w-sm gap-1.5">{Story()}</div>],
 } satisfies Meta<typeof Textarea>;
 

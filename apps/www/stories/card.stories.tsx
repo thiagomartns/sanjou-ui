@@ -14,6 +14,13 @@ import {
 const meta = {
   title: 'Components/Card',
   component: Card,
+  parameters: {
+    docs: {
+      description: {
+        component: `Groups related content and actions in a bordered panel, such as a settings section. Compose it from \`CardHeader\` (with \`CardTitle\` and \`CardDescription\`), \`CardContent\` and \`CardFooter\`. The footer sits on a muted background, with its actions aligned to the end. Card has no shadow: it is part of the page, not floating above it.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Card>;
 
 export default meta;

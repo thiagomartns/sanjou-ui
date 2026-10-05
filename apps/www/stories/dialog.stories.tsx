@@ -18,7 +18,16 @@ import { Label } from '@/registry/sanjou/ui/label';
 const meta = {
   title: 'Components/Dialog',
   component: Dialog,
-  parameters: { layout: 'centered' },
+  parameters: {
+    docs: {
+      description: {
+        component: `A modal window that blocks the page until it is closed. Use it for focused tasks and to confirm destructive actions. For light content next to a trigger that does not block the page, use Popover.
+
+Always include \`DialogTitle\`, and \`DialogDescription\` when there is more to say. Focus moves into the dialog and returns to the trigger when it closes; Escape closes it. In a confirmation, name the action on the button ("Delete project"), not "OK".`,
+      },
+    },
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Dialog>;
 
 export default meta;

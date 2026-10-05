@@ -7,6 +7,15 @@ import { Label } from '@/registry/sanjou/ui/label';
 const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
+  parameters: {
+    docs: {
+      description: {
+        component: `Selects options that take effect when a form is submitted, or items in a list. For a setting that applies immediately, use Switch. Always pair it with a \`Label\`.
+
+\`checked="indeterminate"\` shows a partial selection, such as a select-all box when only some rows are selected. Set \`aria-invalid\` to show an error.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;

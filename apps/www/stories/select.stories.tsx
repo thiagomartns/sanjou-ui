@@ -16,6 +16,15 @@ import {
 const meta = {
   title: 'Components/Select',
   component: Select,
+  parameters: {
+    docs: {
+      description: {
+        component: `Picks one value from a list in a form, such as a time zone or a role. The trigger has the same box, states and text size as Input, so both line up in a form. Use \`SelectGroup\` and \`SelectLabel\` to organize long lists.
+
+For a few options that should all stay visible, use RadioGroup. For actions, use DropdownMenu.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Select>;
 
 export default meta;

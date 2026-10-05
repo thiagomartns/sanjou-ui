@@ -6,6 +6,13 @@ import { Separator } from '@/registry/sanjou/ui/separator';
 const meta = {
   title: 'Components/Separator',
   component: Separator,
+  parameters: {
+    docs: {
+      description: {
+        component: `A thin line that divides content. It is decorative by default and hidden from assistive tech. Set \`decorative={false}\` when the line marks a real boundary between sections, so screen readers announce it. Use \`orientation="vertical"\` inside rows, such as toolbars.`,
+      },
+    },
+  },
 } satisfies Meta<typeof Separator>;
 
 export default meta;

@@ -7,6 +7,15 @@ import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
 const meta = {
   title: 'Components/RadioGroup',
   component: RadioGroup,
+  parameters: {
+    docs: {
+      description: {
+        component: `Picks one option from a small set when all options should stay visible, usually up to five. For longer lists, use Select.
+
+Name the group with \`aria-label\` or, in a form, a \`fieldset\` and \`legend\`, and give each item a \`Label\`. Arrow keys move the selection.`,
+      },
+    },
+  },
 } satisfies Meta<typeof RadioGroup>;
 
 export default meta;
