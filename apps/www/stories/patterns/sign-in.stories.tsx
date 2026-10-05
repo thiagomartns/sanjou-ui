@@ -1,7 +1,10 @@
-import type { FormEvent } from 'react';
+import { useEffect } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CircleAlert } from 'lucide-react';
-import { expect, fn } from 'storybook/test';
+import { useForm } from 'react-hook-form';
+import { expect, fn, waitFor } from 'storybook/test';
+import { z } from 'zod';
 
 import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
 import { Button } from '@/registry/sanjou/ui/button';
@@ -14,73 +17,117 @@ import {
   CardTitle,
 } from '@/registry/sanjou/ui/card';
 import { Checkbox } from '@/registry/sanjou/ui/checkbox';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/registry/sanjou/ui/form';
 import { Input } from '@/registry/sanjou/ui/input';
-import { Label } from '@/registry/sanjou/ui/label';
+
+const schema = z.object({
+  email: z.email('Enter the email linked to your workspace.'),
+  password: z.string().min(1, 'Enter your password.'),
+  remember: z.boolean(),
+});
+
+type Values = z.infer<typeof schema>;
 
 type SignInFormProps = {
-  onSubmit: (values: { email: string; password: string; remember: boolean }) => void;
+  onSubmit: (values: Values) => void;
+  /** A server-side failure, such as wrong credentials. */
   error?: string;
 };
 
 function SignInForm({ onSubmit, error }: SignInFormProps) {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    onSubmit({
-      email: String(data.get('email')),
-      password: String(data.get('password')),
-      remember: data.get('remember') === 'on',
-    });
-  }
+  const form = useForm<Values>({
+    resolver: zodResolver(schema),
+    defaultValues: { email: '', password: '', remember: false },
+  });
+
+  // A failed attempt marks both fields invalid; the Alert carries the message.
+  useEffect(() => {
+    if (!error) return;
+    form.setError('email', { type: 'server' });
+    form.setError('password', { type: 'server' });
+  }, [error, form]);
 
   return (
     <Card className="w-sm">
-      <form onSubmit={handleSubmit} noValidate>
-        <CardHeader>
-          <CardTitle>Sign in to Sanjou</CardTitle>
-          <CardDescription>Use the email linked to your workspace.</CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4">
-          {error && (
-            <Alert variant="danger">
-              <CircleAlert />
-              <AlertTitle>Could not sign in</AlertTitle>
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-          <div className="grid gap-1.5">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit((values) => onSubmit(values))} noValidate>
+          <CardHeader>
+            <CardTitle>Sign in to Sanjou</CardTitle>
+            <CardDescription>Use the email linked to your workspace.</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            {error && (
+              <Alert variant="danger">
+                <CircleAlert />
+                <AlertTitle>Could not sign in</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            <FormField
+              control={form.control}
               name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@company.com"
-              aria-invalid={error ? true : undefined}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      autoComplete="email"
+                      placeholder="you@company.com"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="grid gap-1.5">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
+            <FormField
+              control={form.control}
               name="password"
-              type="password"
-              autoComplete="current-password"
-              aria-invalid={error ? true : undefined}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" autoComplete="current-password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox id="remember" name="remember" />
-            <Label htmlFor="remember">Remember me</Label>
-          </div>
-        </CardContent>
-        <CardFooter className="justify-between">
-          <Button type="button" variant="ghost">
-            Reset password
-          </Button>
-          <Button type="submit">Sign in</Button>
-        </CardFooter>
-      </form>
+            <FormField
+              control={form.control}
+              name="remember"
+              render={({ field }) => (
+                <FormItem className="flex items-center gap-2">
+                  <FormControl>
+                    <Checkbox
+                      ref={field.ref}
+                      name={field.name}
+                      checked={field.value}
+                      onCheckedChange={(checked) => field.onChange(checked === true)}
+                      onBlur={field.onBlur}
+                    />
+                  </FormControl>
+                  <FormLabel>Remember me</FormLabel>
+                </FormItem>
+              )}
+            />
+          </CardContent>
+          <CardFooter className="justify-between">
+            <Button type="button" variant="ghost">
+              Reset password
+            </Button>
+            <Button type="submit">Sign in</Button>
+          </CardFooter>
+        </form>
+      </Form>
     </Card>
   );
 }
@@ -91,7 +138,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `A sign-in form with labeled fields and a submit button. A failed attempt shows an Alert above the fields.`,
+        component: `A sign-in form built with Form: labeled fields, validation before submit, and a submit button. A failed attempt shows an Alert above the fields and marks them invalid.`,
       },
     },
     layout: 'centered',
@@ -125,11 +172,30 @@ export const Default: Story = {
     await expect(submit).toHaveFocus();
 
     await userEvent.keyboard('{Enter}');
-    await expect(args.onSubmit).toHaveBeenCalledWith({
-      email: 'ada@sanjou.dev',
-      password: 'correct horse',
-      remember: true,
-    });
+    await waitFor(() =>
+      expect(args.onSubmit).toHaveBeenCalledWith({
+        email: 'ada@sanjou.dev',
+        password: 'correct horse',
+        remember: true,
+      }),
+    );
+  },
+};
+
+export const Validation: Story = {
+  play: async ({ args, canvas, userEvent }) => {
+    await userEvent.click(canvas.getByRole('button', { name: 'Sign in' }));
+
+    const email = canvas.getByLabelText('Email');
+    // Focus moves before the messages render, so wait for both.
+    await waitFor(() => expect(email).toHaveFocus());
+    await waitFor(() =>
+      expect(email).toHaveAccessibleDescription('Enter the email linked to your workspace.'),
+    );
+    await expect(canvas.getByLabelText('Password')).toHaveAccessibleDescription(
+      'Enter your password.',
+    );
+    await expect(args.onSubmit).not.toHaveBeenCalled();
   },
 };
 
@@ -137,6 +203,8 @@ export const WithError: Story = {
   args: { error: 'The email or password is incorrect. Try again or reset your password.' },
   play: async ({ canvas }) => {
     await expect(canvas.getByRole('alert')).toHaveTextContent('Could not sign in');
-    await expect(canvas.getByLabelText('Email')).toHaveAttribute('aria-invalid', 'true');
+    await waitFor(() =>
+      expect(canvas.getByLabelText('Email')).toHaveAttribute('aria-invalid', 'true'),
+    );
   },
 };

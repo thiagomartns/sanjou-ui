@@ -604,6 +604,28 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Form fields wired to react-hook-form with zod validation: Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, useFormField. FormControl sets the id, aria-invalid and aria-describedby on the control.",
+      "dependencies": [
+        "react-hook-form",
+        "zod",
+        "@hookform/resolvers",
+        "@radix-ui/react-label",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "@sanjou/label"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
