@@ -17,6 +17,7 @@ import {
 import { Checkbox } from '@/registry/sanjou/ui/checkbox';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
+import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/popover';
 import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
 import { Separator } from '@/registry/sanjou/ui/separator';
 import { Skeleton } from '@/registry/sanjou/ui/skeleton';
@@ -259,6 +260,30 @@ export default function Home() {
               </div>
             ))}
           </RadioGroup>
+        </Preview>
+
+        <Preview
+          name="popover"
+          title="Popover"
+          description="Floating panel for short forms and details. Escape or a click outside closes it."
+        >
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline">Edit dimensions</Button>
+            </PopoverTrigger>
+            <PopoverContent aria-label="Dimensions" className="grid gap-4">
+              <div className="grid gap-1">
+                <p className="text-sm font-medium">Dimensions</p>
+                <p className="text-sm text-muted-foreground">Set the size of the layer.</p>
+              </div>
+              <div className="grid grid-cols-3 items-center gap-2">
+                <Label htmlFor="preview-width">Width</Label>
+                <Input id="preview-width" defaultValue="100%" className="col-span-2" />
+                <Label htmlFor="preview-height">Height</Label>
+                <Input id="preview-height" defaultValue="25px" className="col-span-2" />
+              </div>
+            </PopoverContent>
+          </Popover>
         </Preview>
 
         <Preview
