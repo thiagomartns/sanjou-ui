@@ -91,8 +91,8 @@ export default function Home() {
         <ol className="grid list-decimal gap-4 pl-5 text-sm">
           <li className="grid gap-2">
             <span>
-              Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized (
-              <code className="font-mono">npx shadcn@latest init</code>).
+              Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix (
+              <code className="font-mono">npx shadcn@latest init --base radix</code>).
             </span>
           </li>
           <li className="grid gap-2">
@@ -103,7 +103,7 @@ export default function Home() {
           </li>
           <li className="grid gap-2">
             <span>Install the theme first, then any component:</span>
-            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add @sanjou/button @sanjou/input @sanjou/label`}</Code>
+            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label`}</Code>
           </li>
           <li className="grid gap-2">
             <span>

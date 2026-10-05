@@ -15,6 +15,12 @@ A quiet design system for dense product interfaces. It is built on Radix primiti
 
 ## Install
 
+Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix:
+
+```bash
+npx shadcn@latest init --base radix
+```
+
 Add the registry to `components.json`:
 
 ```jsonc
@@ -29,8 +35,10 @@ Add the theme, then the components you need:
 
 ```bash
 npx shadcn@latest add @sanjou/theme
-npx shadcn@latest add @sanjou/button @sanjou/input @sanjou/label
+npx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label
 ```
+
+`init` creates its own `button.tsx`; `--overwrite` replaces it with the Sanjou one.
 
 The theme item writes the tokens into your `globals.css`. To use the tokens without the CLI, install `@sanjou/tokens` and import its stylesheet after Tailwind:
 

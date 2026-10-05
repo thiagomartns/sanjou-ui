@@ -40,9 +40,8 @@ function SelectTrigger({
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild>
-        <ChevronDown className="text-muted-foreground" />
-      </SelectPrimitive.Icon>
+      {/* Not `SelectPrimitive.Icon asChild`: the shadcn CLI rewrites `asChild` to `render` for Base UI styles. */}
+      <ChevronDown aria-hidden="true" className="text-muted-foreground" />
     </SelectPrimitive.Trigger>
   );
 }

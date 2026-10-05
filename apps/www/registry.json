@@ -7,7 +7,7 @@
       "name": "theme",
       "type": "registry:theme",
       "title": "Sanjou theme",
-      "description": "Sanjou UI color scales, semantic tokens, radius and type scale (light + dark). Generated from packages/tokens.",
+      "description": "Sanjou UI color scales, semantic tokens, radius, shadows, easing and type scale (light + dark). Generated from packages/tokens.",
       "cssVars": {
         "theme": {
           "font-sans": "var(--font-geist-sans, \"Geist\"), ui-sans-serif, system-ui, sans-serif",
@@ -16,6 +16,12 @@
           "radius-md": "calc(var(--radius) - 2px)",
           "radius-lg": "var(--radius)",
           "radius-xl": "calc(var(--radius) + 4px)",
+          "shadow-xs": "0 1px 2px 0 hsl(var(--shadow-color) / 0.05)",
+          "shadow-sm": "0 1px 2px 0 hsl(var(--shadow-color) / 0.06), 0 1px 3px 0 hsl(var(--shadow-color) / 0.08)",
+          "shadow-md": "0 4px 12px -2px hsl(var(--shadow-color) / 0.1), 0 2px 4px -2px hsl(var(--shadow-color) / 0.06)",
+          "shadow-lg": "0 16px 40px -8px hsl(var(--shadow-color) / 0.18), 0 4px 12px -4px hsl(var(--shadow-color) / 0.08)",
+          "ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "ease-out": "cubic-bezier(0.16, 1, 0.3, 1)",
           "color-gray-1": "var(--gray-1)",
           "color-gray-2": "var(--gray-2)",
           "color-gray-3": "var(--gray-3)",
@@ -329,6 +335,23 @@
           "danger-text": "var(--red-11)",
           "overlay": "color-mix(in oklch, #000000 60%, transparent)"
         }
+      },
+      "css": {
+        ":root": {
+          "color-scheme": "light",
+          "--shadow-color": "222 20% 12%"
+        },
+        ".dark": {
+          "color-scheme": "dark",
+          "--shadow-color": "0 0% 0%"
+        },
+        "@layer base": {
+          "body": {
+            "font-size": "var(--text-base)",
+            "line-height": "var(--text-base--line-height)",
+            "-webkit-font-smoothing": "antialiased"
+          }
+        }
       }
     },
     {
@@ -363,7 +386,7 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "description": "Accessible form label (Radix Label).",
+      "description": "Names a form control (Radix Label): set htmlFor to the control id. Dims when a preceding peer control is disabled.",
       "dependencies": [
         "@radix-ui/react-label"
       ],

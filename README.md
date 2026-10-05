@@ -58,6 +58,14 @@ pnpm lint && pnpm typecheck
 
 ## Using the registry in another project
 
+Start from a Next.js + Tailwind CSS 4 project and initialize shadcn/ui with Radix (Sanjou components are built on Radix; the default `init -d` picks Base UI):
+
+```bash
+npx shadcn@latest init --base radix
+```
+
+Then add the registry:
+
 ```jsonc
 // components.json
 {
@@ -69,8 +77,10 @@ pnpm lint && pnpm typecheck
 
 ```bash
 npx shadcn@latest add @sanjou/theme      # tokens into your globals.css
-npx shadcn@latest add @sanjou/button @sanjou/input @sanjou/label @sanjou/badge @sanjou/card
+npx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label @sanjou/badge @sanjou/card
 ```
+
+`init` creates its own `components/ui/button.tsx`; `--overwrite` replaces it with the Sanjou one.
 
 Load Geist via `next/font/google` with the variables `--font-geist-sans` and `--font-geist-mono`.
 
