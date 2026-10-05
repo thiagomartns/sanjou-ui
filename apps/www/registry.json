@@ -556,6 +556,22 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Menu of actions or options opened from a trigger: items, checkbox and radio items, labels, separators, shortcuts and submenus (Radix Dropdown Menu).",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
