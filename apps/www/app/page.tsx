@@ -3,6 +3,7 @@ import { CircleCheck, Copy, MoreHorizontal, Search, Trash2 } from 'lucide-react'
 import { Code } from '@/components/site/code';
 import { Preview } from '@/components/site/preview';
 import { ThemeToggle } from '@/components/site/theme-toggle';
+import { ToastDemo } from '@/components/site/toast-demo';
 import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
 import { Badge } from '@/registry/sanjou/ui/badge';
 import { Button } from '@/registry/sanjou/ui/button';
@@ -402,6 +403,14 @@ export default function Home() {
               Project settings are read-only for viewers.
             </TabsContent>
           </Tabs>
+        </Preview>
+
+        <Preview
+          name="sonner"
+          title="Toast"
+          description="Short, non-blocking notice. Stacks, closes on its own and can offer an action."
+        >
+          <ToastDemo />
         </Preview>
 
         <Preview
