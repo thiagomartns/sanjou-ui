@@ -26,6 +26,7 @@ sanjou-ui/
 │   ├── registry.json         ← registry manifest (the `theme` item is generated)
 │   ├── stories/              ← Storybook stories = the test suite
 │   └── app/                  ← docs pages
+├── packages/ui/              @sanjou/ui (npm): the components, compiled from registry/sanjou/ui
 └── packages/tokens/          @sanjou/tokens (npm): the token generator and its outputs
     ├── src/config.mjs        ← THE source of truth for colors, type, radius, spacing
     ├── sanjou.css            ← generated Tailwind 4 theme (light + dark)
@@ -85,6 +86,27 @@ npx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label @sa
 `init` creates its own `components/ui/button.tsx`; `--overwrite` replaces it with the Sanjou one.
 
 Load Geist via `next/font/google` with the variables `--font-geist-sans` and `--font-geist-mono`.
+
+## Using the npm packages
+
+The same components ship as `@sanjou/ui`, compiled from the registry sources, for projects that prefer updating by version to owning the code. Both packages are published from `0.1.0` on.
+
+```bash
+pnpm add @sanjou/ui @sanjou/tokens
+```
+
+```css
+/* globals.css */
+@import 'tailwindcss';
+@import '@sanjou/tokens/sanjou.css';
+@source '../node_modules/@sanjou/ui'; /* relative to this file */
+```
+
+```tsx
+import { Button } from '@sanjou/ui/button';
+```
+
+`@sanjou/ui/form` and `@sanjou/ui/sonner` expect `react-hook-form` and `sonner` to be installed by your app. See [`packages/ui/README.md`](packages/ui/README.md).
 
 ## Changing a token
 
