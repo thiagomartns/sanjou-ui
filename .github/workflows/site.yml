@@ -1,0 +1,38 @@
+name: Site
+
+# Deploys the docs site and the shadcn registry to Vercel production on a release (ADRs 0005 and 0011).
+# Pushes to `main` do not deploy (apps/www/vercel.json); other branches get Vercel previews.
+# The Vercel secrets live in the `production` environment, which only `v*` tags can use.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vercel-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://sanjou-ui.vercel.app
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm dlx vercel@62 pull --yes --environment=production --token="$VERCEL_TOKEN"
+      - run: pnpm dlx vercel@62 build --prod --token="$VERCEL_TOKEN"
+      - run: pnpm dlx vercel@62 deploy --prebuilt --prod --token="$VERCEL_TOKEN"
