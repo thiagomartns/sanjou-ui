@@ -3,6 +3,7 @@ node_modules
 .turbo
 out
 storybook-static
+dist
 apps/www/public/r
 *.tsbuildinfo
 .env*
