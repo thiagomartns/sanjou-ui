@@ -5,8 +5,9 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 ## Architecture
 
 - `packages/tokens` — token generator (plain Node ESM, zero deps). `src/config.mjs` is the single source of truth. Everything else in that package (`sanjou.css`, `tokens.json`, `figma/`, `CONTRAST.md`) the `theme` item in `apps/www/registry.json`, the brand mark (`.github/assets/sanjou-mark*.svg`) and `apps/www/public/favicon.svg` are GENERATED: never edit them by hand; edit config and run `pnpm tokens`.
+- `packages/ui` — `@sanjou/ui`: build config only (tsdown), compiled from `apps/www/registry/sanjou/ui`. `dist/` is git-ignored.
 - `apps/www` — Next.js 15 (App Router) app that is at the same time: the docs site, the shadcn registry host (`shadcn build` → `public/r`), and the Storybook project.
-- Components live in `apps/www/registry/sanjou/ui/*.tsx`. They are distributed as source through the shadcn CLI, NOT as an npm package.
+- Components live in `apps/www/registry/sanjou/ui/*.tsx`, the single source for two distributions: as source through the shadcn CLI (registry), and as the npm package `@sanjou/ui` (`packages/ui`), which compiles those same files with tsdown. Never copy a component into `packages/ui`.
 
 ## Component rules
 
@@ -24,14 +25,18 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 2. `apps/www/stories/<name>.stories.tsx` — variants + at least one `play` test for behavior; stories must pass axe (`a11y.test: 'error'` is global).
 3. Item in `apps/www/registry.json` (`registry:ui`, `dependencies`, `files`).
 4. A `<Preview>` section on `apps/www/app/page.tsx`.
-5. Run: `pnpm lint && pnpm typecheck && pnpm test && pnpm registry:build`.
+5. A subpath in `packages/ui/package.json` `exports`, plus any new npm import in its `dependencies` (same range as `apps/www`). `packages/ui/test/package.test.mjs` fails until both match the registry.
+6. Run: `pnpm lint && pnpm typecheck && pnpm test && pnpm registry:build`.
 
 ## Branches (git flow)
 
+Full flow, merge methods and release steps: [CONTRIBUTING.md](CONTRIBUTING.md).
+
 - `main` holds released code; never commit to it directly.
-- `develop` is the integration branch. `feature/*`, `fix/*`, `refactor/*`, `chore/*` and `docs/*` branch off `develop` and return through a PR.
-- Releases go `develop` → `main` through a PR.
-- `hotfix/*` branches off `main` and is merged into both `main` and `develop`.
+- `develop` is the integration branch. `feature/*`, `fix/*`, `refactor/*`, `chore/*` and `docs/*` branch off `develop` and return through a PR (squash).
+- Releases go `develop` → `main` through a PR (merge commit); release-please then opens the Release PR. Never edit `version` or `CHANGELOG.md` by hand.
+- `hotfix/*` branches off `main`; the back-merge PR `main` → `develop` (merge commit, never squash) brings it to `develop`.
+- PR titles and commit messages follow Conventional Commits (`feat:`, `fix:`, `chore:`…): the squashed PR title decides the next version.
 
 ## Commands
 
@@ -48,4 +53,4 @@ UI copy in English, sentence case, buttons start with a verb, no emoji. See the 
 - When making an architecture or tooling decision (library choice, pattern, workflow), propose an ADR in `docs/adr/` using `docs/adr/0000-template.md` and add it to the index in `docs/adr/README.md`.
 - When changing behavior described in README/CONTRIBUTING, update that doc in the same PR.
 - Deliver task reports in the conversation or in the PR description, not as a versioned file.
-- Rationale: [ADR 0001](docs/adr/0001-adrs-and-ai-artifacts-outside-git.md). `CONTRIBUTING.md`, once it exists, must point to `docs/adr/` as well.
+- Rationale: [ADR 0001](docs/adr/0001-adrs-and-ai-artifacts-outside-git.md). `CONTRIBUTING.md` points to `docs/adr/` as well; keep it that way.
