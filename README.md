@@ -114,6 +114,10 @@ import { Button } from '@sanjou/ui/button';
 3. Commit the generated files together with the change. Releases are cut from the Conventional Commit types (`fix:` → patch, `feat:` → minor), so no extra release file is needed.
 4. Re-import `packages/tokens/figma/native/*.json` into Figma.
 
+## Contributing
+
+Branches, pull request titles, merge methods and the release flow are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 MIT

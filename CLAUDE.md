@@ -30,10 +30,13 @@ pnpm workspaces + Turborepo. Always use `pnpm`, never npm/yarn.
 
 ## Branches (git flow)
 
+Full flow, merge methods and release steps: [CONTRIBUTING.md](CONTRIBUTING.md).
+
 - `main` holds released code; never commit to it directly.
-- `develop` is the integration branch. `feature/*`, `fix/*`, `refactor/*`, `chore/*` and `docs/*` branch off `develop` and return through a PR.
-- Releases go `develop` → `main` through a PR.
-- `hotfix/*` branches off `main` and is merged into both `main` and `develop`.
+- `develop` is the integration branch. `feature/*`, `fix/*`, `refactor/*`, `chore/*` and `docs/*` branch off `develop` and return through a PR (squash).
+- Releases go `develop` → `main` through a PR (merge commit); release-please then opens the Release PR. Never edit `version` or `CHANGELOG.md` by hand.
+- `hotfix/*` branches off `main`; the back-merge PR `main` → `develop` (merge commit, never squash) brings it to `develop`.
+- PR titles and commit messages follow Conventional Commits (`feat:`, `fix:`, `chore:`…): the squashed PR title decides the next version.
 
 ## Commands
 
@@ -50,4 +53,4 @@ UI copy in English, sentence case, buttons start with a verb, no emoji. See the 
 - When making an architecture or tooling decision (library choice, pattern, workflow), propose an ADR in `docs/adr/` using `docs/adr/0000-template.md` and add it to the index in `docs/adr/README.md`.
 - When changing behavior described in README/CONTRIBUTING, update that doc in the same PR.
 - Deliver task reports in the conversation or in the PR description, not as a versioned file.
-- Rationale: [ADR 0001](docs/adr/0001-adrs-and-ai-artifacts-outside-git.md). `CONTRIBUTING.md`, once it exists, must point to `docs/adr/` as well.
+- Rationale: [ADR 0001](docs/adr/0001-adrs-and-ai-artifacts-outside-git.md). `CONTRIBUTING.md` points to `docs/adr/` as well; keep it that way.
