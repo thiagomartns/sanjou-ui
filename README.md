@@ -51,13 +51,12 @@ pnpm lint && pnpm typecheck
 
 ## Commands
 
-| Command                           | What it does                                                                           |
-| --------------------------------- | -------------------------------------------------------------------------------------- |
-| `pnpm tokens`                     | Regenerates CSS, DTCG JSON, Figma files, contrast report and the registry `theme` item |
-| `pnpm tokens:check`               | Fails if generated files are stale or any contrast rule fails (CI)                     |
-| `pnpm registry:build`             | `shadcn build` → `apps/www/public/r/*.json`                                            |
-| `pnpm build`                      | Tokens → registry → Next.js build                                                      |
-| `pnpm changeset` / `pnpm release` | Version and publish `@sanjou/tokens` to npm                                            |
+| Command               | What it does                                                                           |
+| --------------------- | -------------------------------------------------------------------------------------- |
+| `pnpm tokens`         | Regenerates CSS, DTCG JSON, Figma files, contrast report and the registry `theme` item |
+| `pnpm tokens:check`   | Fails if generated files are stale or any contrast rule fails (CI)                     |
+| `pnpm registry:build` | `shadcn build` → `apps/www/public/r/*.json`                                            |
+| `pnpm build`          | Tokens → registry → Next.js build                                                      |
 
 ## Using the registry in another project
 
@@ -112,7 +111,7 @@ import { Button } from '@sanjou/ui/button';
 
 1. Edit `packages/tokens/src/config.mjs`.
 2. `pnpm tokens` — the build fails if any contrast rule breaks.
-3. Commit the generated files together with the change; add a changeset.
+3. Commit the generated files together with the change. Releases are cut from the Conventional Commit types (`fix:` → patch, `feat:` → minor), so no extra release file is needed.
 4. Re-import `packages/tokens/figma/native/*.json` into Figma.
 
 ## License
