@@ -1,8 +1,11 @@
-import { Search } from 'lucide-react';
+import { CircleCheck, Copy, MoreHorizontal, Search, Trash2 } from 'lucide-react';
 
 import { Code } from '@/components/site/code';
+import { FormDemo } from '@/components/site/form-demo';
 import { Preview } from '@/components/site/preview';
 import { ThemeToggle } from '@/components/site/theme-toggle';
+import { ToastDemo } from '@/components/site/toast-demo';
+import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
 import { Badge } from '@/registry/sanjou/ui/badge';
 import { Button } from '@/registry/sanjou/ui/button';
 import {
@@ -13,8 +16,42 @@ import {
   CardHeader,
   CardTitle,
 } from '@/registry/sanjou/ui/card';
+import { Checkbox } from '@/registry/sanjou/ui/checkbox';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/registry/sanjou/ui/dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/registry/sanjou/ui/dropdown-menu';
+import { FieldLegend, FieldSet } from '@/registry/sanjou/ui/field';
 import { Input } from '@/registry/sanjou/ui/input';
 import { Label } from '@/registry/sanjou/ui/label';
+import { Popover, PopoverContent, PopoverTrigger } from '@/registry/sanjou/ui/popover';
+import { RadioGroup, RadioGroupItem } from '@/registry/sanjou/ui/radio-group';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/registry/sanjou/ui/select';
+import { Separator } from '@/registry/sanjou/ui/separator';
+import { Skeleton } from '@/registry/sanjou/ui/skeleton';
+import { Switch } from '@/registry/sanjou/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/registry/sanjou/ui/tabs';
+import { Textarea } from '@/registry/sanjou/ui/textarea';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/registry/sanjou/ui/tooltip';
 
 const registriesSnippet = `{
   "registries": {
@@ -54,8 +91,8 @@ export default function Home() {
         <ol className="grid list-decimal gap-4 pl-5 text-sm">
           <li className="grid gap-2">
             <span>
-              Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized (
-              <code className="font-mono">npx shadcn@latest init</code>).
+              Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix (
+              <code className="font-mono">npx shadcn@latest init --base radix</code>).
             </span>
           </li>
           <li className="grid gap-2">
@@ -66,7 +103,7 @@ export default function Home() {
           </li>
           <li className="grid gap-2">
             <span>Install the theme first, then any component:</span>
-            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add @sanjou/button @sanjou/input @sanjou/label`}</Code>
+            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label`}</Code>
           </li>
           <li className="grid gap-2">
             <span>
@@ -107,6 +144,23 @@ export default function Home() {
             <p id="slug-help" className="text-sm text-muted-foreground">
               Shown in the URL and in invites.
             </p>
+          </div>
+        </Preview>
+
+        <Preview
+          name="label"
+          title="Label"
+          description="Names a control: clicking it focuses or toggles the field. Mark optional fields in words."
+        >
+          <div className="grid w-full max-w-sm gap-1.5">
+            <Label htmlFor="company">
+              Company <span className="font-normal text-muted-foreground">(optional)</span>
+            </Label>
+            <Input id="company" />
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="product-updates" />
+            <Label htmlFor="product-updates">Send me product updates</Label>
           </div>
         </Preview>
 
@@ -152,6 +206,271 @@ export default function Home() {
               <Button>Generate new key</Button>
             </CardFooter>
           </Card>
+        </Preview>
+        <Preview
+          name="textarea"
+          title="Textarea"
+          description="Grows with its content. Same border, focus and error states as Input."
+        >
+          <div className="grid w-full max-w-sm gap-1.5">
+            <Label htmlFor="project-description">Description</Label>
+            <Textarea id="project-description" placeholder="What is this project for?" />
+          </div>
+        </Preview>
+
+        <Preview
+          name="separator"
+          title="Separator"
+          description="A hairline in the border color. Decorative unless it carries meaning."
+        >
+          <div className="grid w-full max-w-sm gap-3 text-sm">
+            <p className="font-medium">Sanjou UI</p>
+            <Separator />
+            <div className="flex h-5 items-center gap-3 text-muted-foreground">
+              <span>Docs</span>
+              <Separator orientation="vertical" />
+              <span>Changelog</span>
+              <Separator orientation="vertical" />
+              <span>GitHub</span>
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="skeleton"
+          title="Skeleton"
+          description="Mirrors the shape of the content it replaces. Stops pulsing for reduced motion."
+        >
+          <div aria-busy="true" className="flex w-full max-w-sm items-center gap-3">
+            <span className="sr-only">Loading profile</span>
+            <Skeleton className="size-10 rounded-full" />
+            <div className="grid flex-1 gap-2">
+              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-4 w-1/2" />
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="alert"
+          title="Alert"
+          description="Inline feedback on a tinted surface. Title says what happened, description says what to do."
+        >
+          <Alert variant="success" role="status" className="max-w-md">
+            <CircleCheck />
+            <AlertTitle>Deploy finished</AlertTitle>
+            <AlertDescription>Version 0.1.0 is live in production.</AlertDescription>
+          </Alert>
+        </Preview>
+
+        <Preview
+          name="checkbox"
+          title="Checkbox"
+          description="For choices that apply on submit. Mixed state for partial selections."
+        >
+          <div className="grid gap-2">
+            <div className="flex items-center gap-2">
+              <Checkbox id="preview-terms" defaultChecked />
+              <Label htmlFor="preview-terms">Accept the terms of service</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="preview-all" checked="indeterminate" />
+              <Label htmlFor="preview-all">Select all projects</Label>
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="switch"
+          title="Switch"
+          description="For settings that apply immediately. Ink when on, never color alone."
+        >
+          <div className="flex items-center gap-2">
+            <Switch id="preview-notifications" defaultChecked />
+            <Label htmlFor="preview-notifications">Email notifications</Label>
+          </div>
+        </Preview>
+
+        <Preview
+          name="radio-group"
+          title="Radio group"
+          description="One choice from a short, visible list. Arrow keys move the selection."
+        >
+          <RadioGroup defaultValue="pro" aria-label="Plan">
+            {['Hobby', 'Pro', 'Enterprise'].map((plan) => (
+              <div key={plan} className="flex items-center gap-2">
+                <RadioGroupItem id={`preview-${plan}`} value={plan.toLowerCase()} />
+                <Label htmlFor={`preview-${plan}`}>{plan}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </Preview>
+
+        <Preview
+          name="field"
+          title="FieldSet"
+          description="A heading for a group of fields, announced as the group's name."
+        >
+          <FieldSet className="w-full max-w-sm">
+            <FieldLegend>Billing address</FieldLegend>
+            <div className="grid gap-1.5">
+              <Label htmlFor="preview-street">Street</Label>
+              <Input id="preview-street" autoComplete="street-address" />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="preview-city">City</Label>
+              <Input id="preview-city" autoComplete="address-level2" />
+            </div>
+          </FieldSet>
+        </Preview>
+
+        <Preview
+          name="dialog"
+          title="Dialog"
+          description="Modal window for focused tasks and confirmations. Traps focus until closed."
+        >
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="destructive">Delete project</Button>
+            </DialogTrigger>
+            <DialogContent role="alertdialog" showCloseButton={false} className="sm:max-w-md">
+              <DialogHeader className="pr-0">
+                <DialogTitle>Delete this project?</DialogTitle>
+                <DialogDescription>
+                  This removes all deployments and environment variables. You cannot undo this.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <DialogClose asChild>
+                  <Button variant="destructive">Delete project</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </Preview>
+
+        <Preview
+          name="dropdown-menu"
+          title="Dropdown menu"
+          description="Actions or options behind a trigger. Arrow keys move, Escape closes."
+        >
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Project actions">
+                <MoreHorizontal />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>Rename</DropdownMenuItem>
+              <DropdownMenuItem>Duplicate</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem variant="destructive">
+                <Trash2 />
+                Delete project
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </Preview>
+
+        <Preview
+          name="popover"
+          title="Popover"
+          description="Floating panel for short forms and details. Escape or a click outside closes it."
+        >
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline">Edit dimensions</Button>
+            </PopoverTrigger>
+            <PopoverContent aria-label="Dimensions" className="grid gap-4">
+              <div className="grid gap-1">
+                <p className="text-sm font-medium">Dimensions</p>
+                <p className="text-sm text-muted-foreground">Set the size of the layer.</p>
+              </div>
+              <div className="grid grid-cols-3 items-center gap-2">
+                <Label htmlFor="preview-width">Width</Label>
+                <Input id="preview-width" defaultValue="100%" className="col-span-2" />
+                <Label htmlFor="preview-height">Height</Label>
+                <Input id="preview-height" defaultValue="25px" className="col-span-2" />
+              </div>
+            </PopoverContent>
+          </Popover>
+        </Preview>
+
+        <Preview
+          name="select"
+          title="Select"
+          description="Picks one option from a list. The trigger lines up with Input in forms."
+        >
+          <div className="grid w-full max-w-xs gap-2">
+            <Label htmlFor="preview-region">Region</Label>
+            <Select>
+              <SelectTrigger id="preview-region">
+                <SelectValue placeholder="Choose a region" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gru">São Paulo (gru1)</SelectItem>
+                <SelectItem value="iad">Washington (iad1)</SelectItem>
+                <SelectItem value="fra">Frankfurt (fra1)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </Preview>
+
+        <Preview
+          name="form"
+          title="Form"
+          description="react-hook-form and zod, with the label, help text and error wired to the field."
+        >
+          <FormDemo />
+        </Preview>
+
+        <Preview
+          name="tabs"
+          title="Tabs"
+          description="Switches between related panels. Arrow keys move between tabs."
+        >
+          <Tabs defaultValue="overview" className="w-full max-w-sm">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="activity">Activity</TabsTrigger>
+              <TabsTrigger value="settings">Settings</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview" className="text-sm text-muted-foreground">
+              Three deployments this week, all healthy.
+            </TabsContent>
+            <TabsContent value="activity" className="text-sm text-muted-foreground">
+              No activity in the last 24 hours.
+            </TabsContent>
+            <TabsContent value="settings" className="text-sm text-muted-foreground">
+              Project settings are read-only for viewers.
+            </TabsContent>
+          </Tabs>
+        </Preview>
+
+        <Preview
+          name="sonner"
+          title="Toast"
+          description="Short, non-blocking notice. Stacks, closes on its own and can offer an action."
+        >
+          <ToastDemo />
+        </Preview>
+
+        <Preview
+          name="tooltip"
+          title="Tooltip"
+          description="Names icon-only controls. Opens on hover and keyboard focus."
+        >
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Copy API key">
+                <Copy />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Copy API key</TooltipContent>
+          </Tooltip>
         </Preview>
       </section>
     </div>

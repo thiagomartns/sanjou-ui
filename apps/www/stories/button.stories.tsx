@@ -7,6 +7,22 @@ import { Button } from '@/registry/sanjou/ui/button';
 const meta = {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: `Triggers an action. Give each view one \`primary\` button for its main action; the other actions take quieter variants.
+
+- \`primary\`: the main action. It is ink, not color.
+- \`secondary\`: other actions next to the primary one.
+- \`outline\`: actions that need a clear edge, such as Cancel in a dialog.
+- \`ghost\`: toolbar and icon actions, where a fill would be noise.
+- \`brand\`: rare brand moments, such as the call to action of an empty state.
+- \`destructive\`: actions that delete or cannot be undone, usually after a confirmation.
+
+\`md\` is the default size, with 14px text like fields. Use \`sm\` (13px text) in dense tables and toolbars, \`lg\` in standalone forms, and \`icon\` for icon-only buttons, which need an \`aria-label\`. With \`asChild\`, a link gets button styles and keeps link semantics.`,
+      },
+    },
+  },
   args: { children: 'Create project', onClick: fn() },
   argTypes: {
     variant: {
@@ -20,7 +36,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Stories that assert on onClick get their own spy: the meta-level one is shared by every
+// story in the file, and a click from one story can land in another's assertion on slow CI.
 export const Primary: Story = {
+  args: { onClick: fn() },
   play: async ({ args, canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole('button', { name: 'Create project' }));
     await expect(args.onClick).toHaveBeenCalledOnce();
@@ -70,7 +89,7 @@ export const Sizes: Story = {
 };
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { disabled: true, onClick: fn() },
   play: async ({ args, canvas, userEvent }) => {
     const button = canvas.getByRole('button');
     await expect(button).toBeDisabled();

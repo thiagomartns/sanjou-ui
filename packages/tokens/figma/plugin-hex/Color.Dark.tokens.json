@@ -731,7 +731,7 @@
   },
   "input": {
     "$type": "color",
-    "$value": "{scale.gray.8}",
+    "$value": "{scale.gray.9}",
     "$extensions": {
       "com.figma.scopes": [
         "STROKE_COLOR",
@@ -893,6 +893,16 @@
         "TEXT_FILL",
         "SHAPE_FILL",
         "STROKE_COLOR"
+      ]
+    }
+  },
+  "overlay": {
+    "$type": "color",
+    "$value": "#00000099",
+    "$extensions": {
+      "com.figma.scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
       ]
     }
   }

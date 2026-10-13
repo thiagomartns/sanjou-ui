@@ -1,0 +1,30 @@
+# 0005 — Deploy de produção somente na release
+
+- **Status:** Aceito
+- **Data:** 2026-10-01
+- **Implementação:** workflow de release em `feature/npm-publish`; workflow do Storybook em `.github/workflows/storybook.yml`; site e registry em `.github/workflows/site.yml` ([0011](0011-site-and-registry-on-vercel.md))
+
+## Contexto
+
+Com [0002](0002-git-flow-merge-strategy.md) e [0003](0003-release-please-conventional-commits.md), a `main` recebe a promoção da `develop` antes do merge do Release PR. Nesse intervalo, a `main` tem código ainda não lançado. Hoje não há deploy configurado no repositório: a URL `sanjou-ui.vercel.app` é placeholder. O plano do Storybook previa deploy em todo push na `main`.
+
+## Decisão
+
+Produção (npm, Storybook no GitHub Pages e o site/registry quando houver hospedagem) é implantada **somente** quando uma release é criada: `on: release: types: [published]` ou um job condicionado a `release_created` no workflow de release. Feature branches nunca recebem versão; previews são identificados por branch ou SHA.
+
+## Alternativas consideradas
+
+- **Deploy em todo push na `main`:** publicaria código não lançado e desalinharia a produção da versão anunciada.
+- **Integração Git automática da hospedagem (ex.: Vercel em push na `main`):** mesmo problema. Previews por branch podem continuar ligados.
+
+## Consequências
+
+- O que está em produção corresponde sempre a uma tag `vX.Y.Z`.
+- Se a Vercel for conectada, o deploy automático de produção precisa ser desligado e trocado por `vercel deploy --prod` ou deploy hook na release.
+- O gatilho do workflow do Storybook previsto no plano 01 precisa mudar de `push` para a release.
+
+## Exceção temporária (2026-10-05)
+
+Até a release `0.1.0`, o Storybook é publicado a cada push na `develop`, porque o projeto é de estudo e a primeira release depende da automação da npm. Na `0.1.0`, o gatilho de `push` sai do `storybook.yml` e volta a valer só a release. O site e o registry não entram na exceção.
+
+**Encerrada em 2026-10-13**, antes da `0.1.0`: o gatilho `push` saiu do `storybook.yml`, e o Storybook volta a ser publicado só na release.

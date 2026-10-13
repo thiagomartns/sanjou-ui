@@ -7,3 +7,4 @@ packages/tokens/tokens.json
 packages/tokens/figma/**
 packages/tokens/CONTRAST.md
 apps/www/registry.json
+CHANGELOG.md

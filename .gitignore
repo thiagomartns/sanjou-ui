@@ -3,6 +3,7 @@ node_modules
 .turbo
 out
 storybook-static
+dist
 apps/www/public/r
 *.tsbuildinfo
 .env*
@@ -10,3 +11,6 @@ apps/www/public/r
 .DS_Store
 coverage
 *.code-workspace
+
+# Local AI session artifacts (plans, reports) — see docs/adr/0001
+.ai/

@@ -7,7 +7,7 @@
       "name": "theme",
       "type": "registry:theme",
       "title": "Sanjou theme",
-      "description": "Sanjou UI color scales, semantic tokens, radius and type scale (light + dark). Generated from packages/tokens.",
+      "description": "Sanjou UI color scales, semantic tokens, radius, shadows, easing and type scale (light + dark). Generated from packages/tokens.",
       "cssVars": {
         "theme": {
           "font-sans": "var(--font-geist-sans, \"Geist\"), ui-sans-serif, system-ui, sans-serif",
@@ -16,6 +16,12 @@
           "radius-md": "calc(var(--radius) - 2px)",
           "radius-lg": "var(--radius)",
           "radius-xl": "calc(var(--radius) + 4px)",
+          "shadow-xs": "0 1px 2px 0 hsl(var(--shadow-color) / 0.05)",
+          "shadow-sm": "0 1px 2px 0 hsl(var(--shadow-color) / 0.06), 0 1px 3px 0 hsl(var(--shadow-color) / 0.08)",
+          "shadow-md": "0 4px 12px -2px hsl(var(--shadow-color) / 0.1), 0 2px 4px -2px hsl(var(--shadow-color) / 0.06)",
+          "shadow-lg": "0 16px 40px -8px hsl(var(--shadow-color) / 0.18), 0 4px 12px -4px hsl(var(--shadow-color) / 0.08)",
+          "ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "ease-out": "cubic-bezier(0.16, 1, 0.3, 1)",
           "color-gray-1": "var(--gray-1)",
           "color-gray-2": "var(--gray-2)",
           "color-gray-3": "var(--gray-3)",
@@ -109,6 +115,7 @@
           "color-warning-text": "var(--warning-text)",
           "color-danger-subtle": "var(--danger-subtle)",
           "color-danger-text": "var(--danger-text)",
+          "color-overlay": "var(--overlay)",
           "text-xs": "0.75rem",
           "text-xs--line-height": "1rem",
           "text-sm": "0.8125rem",
@@ -213,7 +220,7 @@
           "destructive": "var(--red-9)",
           "destructive-foreground": "oklch(1 0 0)",
           "border": "var(--gray-6)",
-          "input": "var(--gray-8)",
+          "input": "var(--gray-9)",
           "ring": "var(--indigo-9)",
           "brand": "var(--indigo-9)",
           "brand-foreground": "oklch(1 0 0)",
@@ -229,6 +236,7 @@
           "warning-text": "var(--amber-11)",
           "danger-subtle": "var(--red-3)",
           "danger-text": "var(--red-11)",
+          "overlay": "color-mix(in oklch, var(--gray-12) 50%, transparent)",
           "radius": "0.5rem"
         },
         "dark": {
@@ -309,7 +317,7 @@
           "destructive": "var(--red-9)",
           "destructive-foreground": "oklch(1 0 0)",
           "border": "var(--gray-6)",
-          "input": "var(--gray-8)",
+          "input": "var(--gray-9)",
           "ring": "var(--indigo-9)",
           "brand": "var(--indigo-9)",
           "brand-foreground": "oklch(1 0 0)",
@@ -324,7 +332,25 @@
           "warning-subtle": "var(--amber-3)",
           "warning-text": "var(--amber-11)",
           "danger-subtle": "var(--red-3)",
-          "danger-text": "var(--red-11)"
+          "danger-text": "var(--red-11)",
+          "overlay": "color-mix(in oklch, #000000 60%, transparent)"
+        }
+      },
+      "css": {
+        ":root": {
+          "color-scheme": "light",
+          "--shadow-color": "222 20% 12%"
+        },
+        ".dark": {
+          "color-scheme": "dark",
+          "--shadow-color": "0 0% 0%"
+        },
+        "@layer base": {
+          "body": {
+            "font-size": "var(--text-base)",
+            "line-height": "var(--text-base--line-height)",
+            "-webkit-font-smoothing": "antialiased"
+          }
         }
       }
     },
@@ -360,7 +386,7 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "description": "Accessible form label (Radix Label).",
+      "description": "Names a form control (Radix Label): set htmlFor to the control id. Dims when a preceding peer control is disabled.",
       "dependencies": [
         "@radix-ui/react-label"
       ],
@@ -395,6 +421,246 @@
       "files": [
         {
           "path": "registry/sanjou/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text field that grows with its content. Same states as Input; pair with Label.",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Thin horizontal or vertical rule. Decorative by default; set decorative={false} to expose it to assistive tech.",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Placeholder shape for loading content. Hidden from assistive tech; respects reduced motion.",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Inline message with optional icon: Alert, AlertTitle, AlertDescription. Variants: neutral, brand, success, warning, danger.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Binary or mixed choice (Radix Checkbox). Pair with Label; supports indeterminate and aria-invalid.",
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Instant on/off setting (Radix Switch). Pair with Label.",
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio group",
+      "description": "One choice from a short list: RadioGroup, RadioGroupItem (Radix Radio Group). Arrow keys move the selection.",
+      "dependencies": [
+        "@radix-ui/react-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Short label on hover or focus: Tooltip, TooltipTrigger, TooltipContent (Radix Tooltip). Includes its own provider.",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switch between related panels: Tabs, TabsList, TabsTrigger, TabsContent (Radix Tabs).",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Floating panel anchored to a trigger: Popover, PopoverTrigger, PopoverContent, PopoverAnchor (Radix Popover).",
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal window over the page: Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose (Radix Dialog).",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Menu of actions or options opened from a trigger: items, checkbox and radio items, labels, separators, shortcuts and submenus (Radix Dropdown Menu).",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Pick one option from a list: Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator (Radix Select). The trigger matches Input.",
+      "dependencies": [
+        "@radix-ui/react-select",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toast (Sonner)",
+      "description": "Toaster for short, non-blocking notifications, on sonner with Sanjou tokens. Mount <Toaster /> once and call toast() from 'sonner'.",
+      "dependencies": [
+        "sonner",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Form fields wired to react-hook-form with zod validation: Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, useFormField. FormControl sets the id, aria-invalid and aria-describedby on the control.",
+      "dependencies": [
+        "react-hook-form",
+        "zod",
+        "@hookform/resolvers",
+        "@radix-ui/react-label",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "@sanjou/label"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "FieldSet",
+      "description": "Group related fields under a heading: FieldSet (a native fieldset; disabled disables every control inside) and FieldLegend (variant legend for sections, label for a radio group).",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/field.tsx",
           "type": "registry:ui"
         }
       ]

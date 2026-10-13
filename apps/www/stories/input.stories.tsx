@@ -7,6 +7,13 @@ import { Label } from '@/registry/sanjou/ui/label';
 const meta = {
   title: 'Components/Input',
   component: Input,
+  parameters: {
+    docs: {
+      description: {
+        component: `A single-line text field. Pair it with a \`Label\`, and set \`type\` (email, password, number, search) so the right keyboard and autofill appear. Set \`aria-invalid\` to show an error and link the message with \`aria-describedby\`. For longer text, use Textarea.`,
+      },
+    },
+  },
   decorators: [(Story) => <div className="grid max-w-sm gap-1.5">{Story()}</div>],
 } satisfies Meta<typeof Input>;
 

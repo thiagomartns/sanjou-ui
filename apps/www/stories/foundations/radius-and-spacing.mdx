@@ -1,0 +1,27 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as RadiusAndSpacingStories from './radius-and-spacing.stories';
+
+<Meta of={RadiusAndSpacingStories} />
+
+# Radius and spacing
+
+Corners, spacing and shadows are kept few and consistent, so dense screens stay calm.
+
+## Radius
+
+<Canvas of={RadiusAndSpacingStories.Radius} />
+
+All radii derive from one variable, `--radius` (8px), so changing it rescales every corner together. Checkboxes and menu items use `sm`. Buttons, fields, popovers, menus and tooltips use `md`. Cards and dialogs use `lg`, and `xl` is for larger surfaces. `full` is for pills and avatars.
+
+## Spacing
+
+<Canvas of={RadiusAndSpacingStories.Spacing} />
+
+Spacing follows Tailwind's 4px grid: `p-2` is 8px, `gap-4` is 16px. The steps above are the ones exported to Figma and `tokens.json`; stick to them in layouts so screens keep the same rhythm.
+
+## Elevation
+
+<Canvas of={RadiusAndSpacingStories.Elevation} />
+
+Borders separate things; shadows are for what floats. Controls get a hairline `xs` shadow, and only layers above the page (popovers, menus, toasts and dialogs) get `md` or `lg`. In dark mode the shadow color turns black, and borders do most of the work.

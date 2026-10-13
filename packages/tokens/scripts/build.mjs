@@ -9,7 +9,9 @@ import {
   buildContrastReport,
   buildCss,
   buildDtcg,
+  buildFavicon,
   buildFigma,
+  buildLogo,
   buildPalette,
   buildRegistryTheme,
   checkContrast,
@@ -34,6 +36,11 @@ for (const format of ['native', 'plugin-hex'])
     buildFigma(palette, format === 'native' ? 'native' : 'hex'),
   ))
     outputs[join(pkg, 'figma', format, file)] = json(doc);
+
+// Brand mark: static SVGs for the README (light + dark) and the site/Storybook favicon.
+outputs[join(root, '.github', 'assets', 'sanjou-mark.svg')] = buildLogo(palette, 'light');
+outputs[join(root, '.github', 'assets', 'sanjou-mark-dark.svg')] = buildLogo(palette, 'dark');
+outputs[join(root, 'apps', 'www', 'public', 'favicon.svg')] = buildFavicon(palette);
 
 // Keep the `theme` item of the shadcn registry in sync.
 const registryPath = join(root, 'apps', 'www', 'registry.json');
