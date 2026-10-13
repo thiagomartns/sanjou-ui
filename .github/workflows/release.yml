@@ -51,14 +51,26 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          registry-url: https://registry.npmjs.org
+      # Trusted publishing (ADR 0012): npm trades the job's OIDC token for a short-lived publish
+      # token and adds provenance on its own. It needs npm >= 11.5.1; pnpm 10 has no OIDC support,
+      # so pnpm only packs (resolving `workspace:` ranges) and npm publishes the tarballs.
+      - run: npm install --global npm@11.20.0
       - run: pnpm install --frozen-lockfile
       - name: Tokens are up to date and pass contrast
         run: pnpm tokens:check
       - run: pnpm turbo run build --filter="./packages/*"
-      # pnpm skips versions already on npm, so re-running this job is safe.
+      - name: Pack
+        run: pnpm -r --filter "./packages/*" pack --pack-destination "$RUNNER_TEMP/pack"
+      # Versions already on npm are skipped, so re-running this job is safe.
       - name: Publish ${{ needs.release-please.outputs.tag_name }}
-        run: pnpm -r --filter "./packages/*" publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
+        run: |
+          for dir in packages/*/; do
+            name=$(node -p "require('./${dir}package.json').name")
+            version=$(node -p "require('./${dir}package.json').version")
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "$name@$version is already on npm, skipping"
+              continue
+            fi
+            tarball="$RUNNER_TEMP/pack/$(echo "${name#@}" | tr / -)-$version.tgz"
+            npm publish "$tarball" --access public
+          done
