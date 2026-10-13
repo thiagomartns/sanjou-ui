@@ -26,6 +26,10 @@
       "types": "./dist/registry/sanjou/ui/alert.d.ts",
       "default": "./dist/registry/sanjou/ui/alert.js"
     },
+    "./avatar": {
+      "types": "./dist/registry/sanjou/ui/avatar.d.ts",
+      "default": "./dist/registry/sanjou/ui/avatar.js"
+    },
     "./badge": {
       "types": "./dist/registry/sanjou/ui/badge.d.ts",
       "default": "./dist/registry/sanjou/ui/badge.js"
@@ -94,6 +98,10 @@
       "types": "./dist/registry/sanjou/ui/switch.d.ts",
       "default": "./dist/registry/sanjou/ui/switch.js"
     },
+    "./table": {
+      "types": "./dist/registry/sanjou/ui/table.d.ts",
+      "default": "./dist/registry/sanjou/ui/table.js"
+    },
     "./tabs": {
       "types": "./dist/registry/sanjou/ui/tabs.d.ts",
       "default": "./dist/registry/sanjou/ui/tabs.js"
@@ -115,6 +123,7 @@
     "lint:pkg": "publint && attw --pack . --profile esm-only --format table-flipped"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-checkbox": "^1.3.11",
     "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-dropdown-menu": "^2.1.24",
