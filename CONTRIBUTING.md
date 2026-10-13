@@ -73,6 +73,10 @@ A version published to npm can never be reused. A bad release is fixed with `npm
 3. Merge the Release PR: tag, npm publish and deploy, as in a normal release.
 4. The automatic back-merge PR brings the fix to `develop`. Merge it with a merge commit.
 
+## The shadcn CLI version in the docs
+
+README, the docs site (`apps/www/components/site/shadcn.ts`) and the Storybook Introduction pin one shadcn CLI version, so the install steps do not break when the CLI changes its defaults. Bump it only after a clean install passes with the new version: a fresh Next.js app, `init --base radix --preset nova`, `registries` pointing to a local `pnpm --filter www dev`, `add --overwrite` of every item in `apps/www/registry.json`, then `tsc --noEmit`, `next build` and a look at both themes. `packages/ui/test/docs.test.mjs` fails if the three places disagree.
+
 ## Decisions and AI artifacts
 
 Architecture and tooling decisions (a library, a pattern, a workflow) are recorded as ADRs in [`docs/adr/`](docs/adr/README.md). If your change makes one, add an ADR from the template in the same PR.

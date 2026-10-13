@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { Code } from './code';
+import { shadcn } from './shadcn';
 
 export function Preview({
   name,
@@ -22,7 +23,7 @@ export function Preview({
       <div className="flex min-h-28 flex-wrap items-center gap-2 rounded-lg border border-border bg-background p-6">
         {children}
       </div>
-      <Code>npx shadcn@latest add @sanjou/{name}</Code>
+      <Code>{`${shadcn} add @sanjou/${name}`}</Code>
     </section>
   );
 }
