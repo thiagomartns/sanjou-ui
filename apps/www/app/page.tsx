@@ -7,6 +7,7 @@ import { shadcn } from '@/components/site/shadcn';
 import { ThemeToggle } from '@/components/site/theme-toggle';
 import { ToastDemo } from '@/components/site/toast-demo';
 import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
+import { Avatar, AvatarFallback } from '@/registry/sanjou/ui/avatar';
 import { Badge } from '@/registry/sanjou/ui/badge';
 import { Button } from '@/registry/sanjou/ui/button';
 import {
@@ -50,6 +51,14 @@ import {
 import { Separator } from '@/registry/sanjou/ui/separator';
 import { Skeleton } from '@/registry/sanjou/ui/skeleton';
 import { Switch } from '@/registry/sanjou/ui/switch';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/registry/sanjou/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/registry/sanjou/ui/tabs';
 import { Textarea } from '@/registry/sanjou/ui/textarea';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/registry/sanjou/ui/tooltip';
@@ -453,6 +462,80 @@ export default function Home() {
               Project settings are read-only for viewers.
             </TabsContent>
           </Tabs>
+        </Preview>
+
+        <Preview
+          name="avatar"
+          title="Avatar"
+          description="Initials until the photo loads. Pair it with the name; it is never the only label."
+        >
+          <div className="flex items-center gap-3">
+            <Avatar size="sm">
+              <AvatarFallback>OM</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarFallback>JL</AvatarFallback>
+            </Avatar>
+            <Avatar size="lg">
+              <AvatarFallback>IN</AvatarFallback>
+            </Avatar>
+          </div>
+          <div className="flex items-center gap-2">
+            <Avatar>
+              <AvatarFallback>OM</AvatarFallback>
+            </Avatar>
+            <div className="grid">
+              <span className="text-sm font-medium">Olivia Martin</span>
+              <span className="text-sm text-muted-foreground">olivia@acme.com</span>
+            </div>
+          </div>
+        </Preview>
+
+        <Preview
+          name="table"
+          title="Table"
+          description="Compact rows separated by borders. Numbers align right with tabular figures."
+        >
+          <div className="w-full overflow-hidden rounded-lg border border-border bg-card">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Customer</TableHead>
+                  <TableHead className="w-30">Status</TableHead>
+                  <TableHead className="w-30 text-right">Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Olivia Martin</TableCell>
+                  <TableCell>
+                    <Badge variant="success" dot>
+                      Paid
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right tabular-nums">$316.00</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Jackson Lee</TableCell>
+                  <TableCell>
+                    <Badge variant="warning" dot>
+                      Pending
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right tabular-nums">$242.00</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Isabella Nguyen</TableCell>
+                  <TableCell>
+                    <Badge variant="danger" dot>
+                      Overdue
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right tabular-nums">$837.00</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </Preview>
 
         <Preview

@@ -664,6 +664,34 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Picture of a person with an initials fallback (Radix Avatar). Sizes: sm (24), md (32), lg (40).",
+      "dependencies": [
+        "@radix-ui/react-avatar",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/sanjou/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Compact data table on native elements: Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption. 36px header, 40px rows, borders instead of stripes; selected rows use data-state=\"selected\".",
+      "files": [
+        {
+          "path": "registry/sanjou/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
