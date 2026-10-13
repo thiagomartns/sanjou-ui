@@ -58,7 +58,7 @@ Releases are automated with [release-please](https://github.com/googleapis/relea
 
 1. A maintainer opens the promotion PR `develop` → `main` and merges it with a merge commit.
 2. release-please opens (or updates) the Release PR against `main`, with the version bump and the `CHANGELOG.md` entry. Review both.
-3. Merging the Release PR tags `vX.Y.Z`, creates the GitHub Release and publishes both packages to npm with provenance.
+3. Merging the Release PR tags `vX.Y.Z`, creates the GitHub Release and publishes both packages to npm with provenance. Publishing uses npm trusted publishing (OIDC), with no npm token in the repository; see [ADR 0012](docs/adr/0012-npm-trusted-publishing.md).
 4. The GitHub Release deploys the docs site and registry (Vercel) and the Storybook (GitHub Pages), and opens the back-merge PR `main` → `develop`.
 5. A maintainer merges the back-merge PR with a merge commit.
 

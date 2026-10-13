@@ -34,6 +34,7 @@ Não escreva ADR para correções pontuais, detalhes de implementação ou plano
 | [0009](0009-toast-with-sonner.md)                       | Toast com `sonner`, com as cores ligadas aos tokens semânticos        | Aceito |
 | [0010](0010-form-with-react-hook-form-and-zod.md)       | Formulários com `react-hook-form` e `zod`                             | Aceito |
 | [0011](0011-site-and-registry-on-vercel.md)             | Site e registry na Vercel, com deploy de produção pela CLI na release | Aceito |
+| [0012](0012-npm-trusted-publishing.md)                  | Publicação na npm por trusted publishing (OIDC)                       | Aceito |
 
 ## Candidatas (decisões existentes sem motivo registrado)
 

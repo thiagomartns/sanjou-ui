@@ -24,13 +24,8 @@ test('every published package is bumped by release-please', () => {
 
 test('every published package has the released version', () => {
   const released = manifest['.'];
-  const next = config.packages['.']['release-as'];
   for (const path of published) {
     const { name, version } = readJson(path);
-    // Before the first release the manifest says 0.0.0 and `release-as` holds the version to ship.
-    assert.ok(
-      version === released || version === next,
-      `${name} is ${version}, expected ${released}${next ? ` or ${next}` : ''}`,
-    );
+    assert.equal(version, released, `${name} is ${version}, expected ${released}`);
   }
 });
