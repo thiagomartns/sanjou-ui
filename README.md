@@ -58,13 +58,26 @@ pnpm lint && pnpm typecheck
 | `pnpm registry:build` | `shadcn build` → `apps/www/public/r/*.json`                                            |
 | `pnpm build`          | Tokens → registry → Next.js build                                                      |
 
+## Two ways to install
+
+|                   | Registry (shadcn CLI)                                                             | npm packages                                      |
+| ----------------- | --------------------------------------------------------------------------------- | ------------------------------------------------- |
+| What you get      | The component source, copied into your project                                    | `@sanjou/ui` and `@sanjou/tokens` as dependencies |
+| Customizing       | Edit the files directly                                                           | Through `className` and the tokens                |
+| Fixes and updates | Not automatic: run `add --overwrite` again and review the diff against your edits | Bump the version                                  |
+| Pick it when      | You want to own and change the code                                               | You want updates by version and no copied code    |
+
+Both come from the same source files, so a component looks and behaves the same either way.
+
 ## Using the registry in another project
 
 Start from a Next.js + Tailwind CSS 4 project and initialize shadcn/ui with Radix (Sanjou components are built on Radix; the default `init -d` picks Base UI):
 
 ```bash
-npx shadcn@latest init --base radix
+npx shadcn@4.21.4 init --base radix --preset nova
 ```
+
+The docs pin the shadcn CLI to the version the Sanjou registry was last tested with. Newer versions usually work, but the CLI has changed its defaults before.
 
 Then add the registry:
 
@@ -78,17 +91,17 @@ Then add the registry:
 ```
 
 ```bash
-npx shadcn@latest add @sanjou/theme      # tokens into your globals.css
-npx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label @sanjou/badge @sanjou/card
+npx shadcn@4.21.4 add @sanjou/theme      # tokens into your globals.css
+npx shadcn@4.21.4 add --overwrite @sanjou/button @sanjou/input @sanjou/label @sanjou/badge @sanjou/card
 ```
 
-`init` creates its own `components/ui/button.tsx`; `--overwrite` replaces it with the Sanjou one.
+`--overwrite` replaces any shadcn component of the same name already in `components/ui`.
 
-Load Geist via `next/font/google` with the variables `--font-geist-sans` and `--font-geist-mono`.
+To get a fix from a newer Sanjou release, run the same `add --overwrite` command again and review the diff: it replaces the whole file, including your own edits.
 
 ## Using the npm packages
 
-The same components ship as `@sanjou/ui`, compiled from the registry sources, for projects that prefer updating by version to owning the code. Both packages are published from `0.1.0` on.
+The same components ship as `@sanjou/ui`, compiled from the registry sources. Both packages are published from `0.1.0` on.
 
 ```bash
 pnpm add @sanjou/ui @sanjou/tokens
@@ -106,6 +119,39 @@ import { Button } from '@sanjou/ui/button';
 ```
 
 `@sanjou/ui/form` and `@sanjou/ui/sonner` expect `react-hook-form` and `sonner` to be installed by your app. See [`packages/ui/README.md`](packages/ui/README.md).
+
+## Fonts
+
+The theme expects Geist and reads it from two CSS variables, `--font-geist-sans` and `--font-geist-mono`. Without them it looks for fonts named `Geist` and `Geist Mono`, then falls back to `system-ui`.
+
+In Next.js, use `next/font/google` (the default in `create-next-app`):
+
+```tsx
+// app/layout.tsx
+import { Geist, Geist_Mono } from 'next/font/google';
+
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
+const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+
+// <body className={`${geistSans.variable} ${geistMono.variable}`}>
+```
+
+In any other setup (Vite, Astro, React Router…), install the font files and set the same variables:
+
+```bash
+pnpm add @fontsource-variable/geist @fontsource-variable/geist-mono
+```
+
+```css
+/* globals.css */
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+:root {
+  --font-geist-sans: 'Geist Variable';
+  --font-geist-mono: 'Geist Mono Variable';
+}
+```
 
 ## Changing a token
 

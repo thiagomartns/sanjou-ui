@@ -3,6 +3,7 @@ import { CircleCheck, Copy, MoreHorizontal, Search, Trash2 } from 'lucide-react'
 import { Code } from '@/components/site/code';
 import { FormDemo } from '@/components/site/form-demo';
 import { Preview } from '@/components/site/preview';
+import { shadcn } from '@/components/site/shadcn';
 import { ThemeToggle } from '@/components/site/theme-toggle';
 import { ToastDemo } from '@/components/site/toast-demo';
 import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
@@ -92,7 +93,7 @@ export default function Home() {
           <li className="grid gap-2">
             <span>
               Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix (
-              <code className="font-mono">npx shadcn@latest init --base radix</code>).
+              <code className="font-mono">{shadcn} init --base radix --preset nova</code>).
             </span>
           </li>
           <li className="grid gap-2">
@@ -103,13 +104,17 @@ export default function Home() {
           </li>
           <li className="grid gap-2">
             <span>Install the theme first, then any component:</span>
-            <Code>{`npx shadcn@latest add @sanjou/theme\nnpx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label`}</Code>
+            <Code>{`${shadcn} add @sanjou/theme\n${shadcn} add --overwrite @sanjou/button @sanjou/input @sanjou/label`}</Code>
           </li>
           <li className="grid gap-2">
             <span>
               Load Geist with <code className="font-mono">next/font/google</code> using the CSS
               variables <code className="font-mono">--font-geist-sans</code> and{' '}
-              <code className="font-mono">--font-geist-mono</code>.
+              <code className="font-mono">--font-geist-mono</code>. Elsewhere, install{' '}
+              <code className="font-mono">@fontsource-variable/geist</code> and{' '}
+              <code className="font-mono">@fontsource-variable/geist-mono</code> and set those
+              variables to <code className="font-mono">&apos;Geist Variable&apos;</code> and{' '}
+              <code className="font-mono">&apos;Geist Mono Variable&apos;</code>.
             </span>
           </li>
         </ol>
