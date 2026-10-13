@@ -26,3 +26,5 @@ Produção (npm, Storybook no GitHub Pages e o site/registry quando houver hospe
 ## Exceção temporária (2026-10-05)
 
 Até a release `0.1.0`, o Storybook é publicado a cada push na `develop`, porque o projeto é de estudo e a primeira release depende da automação da npm. Na `0.1.0`, o gatilho de `push` sai do `storybook.yml` e volta a valer só a release. O site e o registry não entram na exceção.
+
+**Encerrada em 2026-10-13**, antes da `0.1.0`: o gatilho `push` saiu do `storybook.yml`, e o Storybook volta a ser publicado só na release.

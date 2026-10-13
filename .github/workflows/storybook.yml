@@ -3,17 +3,9 @@ name: Storybook
 # Production deploys only on a release (ADR 0005), so the published Storybook always matches a tag.
 # The release event only fires when the release is created with a token other than GITHUB_TOKEN
 # (release-please runs with a GitHub App token). A manual run must pick a `v*` tag as its ref.
-# Temporary exception until 0.1.0 (ADR 0005): every push to develop also deploys. Remove `push` then.
 on:
   release:
     types: [published]
-  push:
-    branches: [develop]
-    paths:
-      - 'apps/www/**'
-      - 'packages/tokens/**'
-      - 'pnpm-lock.yaml'
-      - '.github/workflows/storybook.yml'
   workflow_dispatch:
 
 permissions:
