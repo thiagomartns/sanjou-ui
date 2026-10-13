@@ -1,0 +1,89 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as AuthStories from './auth.stories';
+
+<Meta of={AuthStories} />
+
+# Auth
+
+Sign in, create account, forgot password and verify email screens, built only with Sanjou components and semantic tokens. This is a pattern, not a component: copy the screens from `stories/patterns/auth/auth.tsx` into your app and adapt them. Variations, such as SSO buttons, are separate examples, not boolean props.
+
+The same screens, states and notes live in Figma, in the `Sanjou UI — Library` file, page `Auth` under `PATTERNS`.
+
+<Canvas of={AuthStories.SignIn} />
+
+## Layout
+
+Image on the left, form panel on the right. The panel takes a quarter of the screen, from 24rem to 32rem, so the fields never get too narrow. The image shows from 1024px (`lg`) up; below that only the panel shows, with its content at most 24rem wide and 16px side margins. The panel sits on `bg-background`, not in a Card. The logo and the titles are centered; fields and labels stay left-aligned.
+
+```tsx
+<div className="grid min-h-svh bg-background lg:grid-cols-[1fr_clamp(24rem,25%,32rem)]">
+  <div className="relative hidden lg:block">{/* image */}</div>
+  <div className="flex items-center justify-center px-4 py-8 lg:px-8">
+    <div className="w-full max-w-sm">{/* form */}</div>
+  </div>
+</div>
+```
+
+## Responsive image
+
+The image is decorative, so `alt=""`. It covers its column at any size and crops what does not fit: `absolute inset-0 size-full object-cover`. Move the focal point with `object-position`, such as `object-[30%_center]`, so the subject stays in view as the column narrows.
+
+The column is hidden on phones, but a hidden `<img>` still downloads. A `<picture>` whose source only matches from 1024px up, over a blank GIF, avoids that:
+
+```tsx
+<picture>
+  <source media="(min-width: 1024px)" srcSet="/auth.jpg" />
+  <img src={BLANK_GIF} alt="" className="absolute inset-0 size-full object-cover" />
+</picture>
+```
+
+In a Next.js app, `next/image` does the same job: `<Image src={auth} alt="" fill sizes="75vw" className="object-cover" />` inside the `relative` column.
+
+In Figma, the `image` layer uses an image fill in Fill mode, which is `object-cover`: resize the instance and the image recrops. Swap the picture by changing that fill.
+
+## Feedback
+
+| Situation                                   | Where it shows                                                             |
+| ------------------------------------------- | -------------------------------------------------------------------------- |
+| Empty or malformed field                    | `FormMessage` under the field, saying how to fix it                        |
+| Request in progress                         | Submit button disabled, with a spinner and the action ("Signing in…")      |
+| Success                                     | `toast.success` with `richColors`                                          |
+| Failure from the server (wrong credentials) | `toast.error` with `richColors` and the reason; both fields marked invalid |
+
+On a failure the form marks both fields with `form.setError` and no message, so the screen does not reveal which one was wrong, and focus returns to the email field. Keep what the person typed. Toasts go away on their own, so the invalid fields are what stays on screen; the Toaster is a live region, so screen readers announce the toast.
+
+<Canvas of={AuthStories.FieldError} />
+
+<Canvas of={AuthStories.Submitting} />
+
+<Canvas of={AuthStories.Success} />
+
+<Canvas of={AuthStories.Failure} />
+
+## Focus order and autocomplete
+
+Fields top to bottom, then Remember me, Forgot password?, the submit button and the footer link. The logo is not focusable. After a failed submit, focus moves to the first invalid field.
+
+| Field                     | Attributes                                          |
+| ------------------------- | --------------------------------------------------- |
+| Email                     | `type="email"` `autoComplete="email"`               |
+| Password (sign in)        | `type="password"` `autoComplete="current-password"` |
+| Password (create account) | `type="password"` `autoComplete="new-password"`     |
+| Name                      | `autoComplete="name"`                               |
+
+Password managers depend on these.
+
+## The other screens
+
+<Canvas of={AuthStories.CreateAccount} />
+
+<Canvas of={AuthStories.ForgotPassword} />
+
+<Canvas of={AuthStories.VerifyEmailScreen} />
+
+## Outside the design system
+
+API calls, sessions, redirects, rate limiting, SSO providers and routing between these screens belong to the app. Each screen receives `onSubmit`, `loading` and, for sign in, `error`, and renders them; the app shows the Toasts. Mount the `Toaster` once, near the root.
+
+The links ("Forgot password?" and the footer links) are plain anchors in `text-brand-text`: the design system has no Link component yet.
