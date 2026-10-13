@@ -1,0 +1,577 @@
+{
+  "$description": "Sanjou UI text and effect styles for Figma. Generated from packages/tokens/src/config.mjs — do not edit.",
+  "text": {
+    "xs/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-xs · 12/16 · font-normal"
+    },
+    "xs/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-xs · 12/16 · font-medium"
+    },
+    "xs/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-xs · 12/16 · font-semibold"
+    },
+    "sm/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-sm · 13/20 · font-normal"
+    },
+    "sm/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-sm · 13/20 · font-medium"
+    },
+    "sm/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-sm · 13/20 · font-semibold"
+    },
+    "base/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-base · 14/20 · font-normal"
+    },
+    "base/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-base · 14/20 · font-medium"
+    },
+    "base/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-base · 14/20 · font-semibold"
+    },
+    "md/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-md · 16/24 · font-normal"
+    },
+    "md/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-md · 16/24 · font-medium"
+    },
+    "md/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-md · 16/24 · font-semibold"
+    },
+    "lg/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-lg · 18/28 · font-normal"
+    },
+    "lg/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-lg · 18/28 · font-medium"
+    },
+    "lg/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "text-lg · 18/28 · font-semibold"
+    },
+    "xl/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1
+      },
+      "description": "text-xl · 20/28 · -0.01em · font-normal"
+    },
+    "xl/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1
+      },
+      "description": "text-xl · 20/28 · -0.01em · font-medium"
+    },
+    "xl/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1
+      },
+      "description": "text-xl · 20/28 · -0.01em · font-semibold"
+    },
+    "2xl/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 32
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1.5
+      },
+      "description": "text-2xl · 24/32 · -0.015em · font-normal"
+    },
+    "2xl/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 32
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1.5
+      },
+      "description": "text-2xl · 24/32 · -0.015em · font-medium"
+    },
+    "2xl/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 32
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1.5
+      },
+      "description": "text-2xl · 24/32 · -0.015em · font-semibold"
+    },
+    "3xl/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 30,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 36
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -2
+      },
+      "description": "text-3xl · 30/36 · -0.02em · font-normal"
+    },
+    "3xl/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 30,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 36
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -2
+      },
+      "description": "text-3xl · 30/36 · -0.02em · font-medium"
+    },
+    "3xl/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 30,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 36
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -2
+      },
+      "description": "text-3xl · 30/36 · -0.02em · font-semibold"
+    },
+    "4xl/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 36,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 40
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -2.5
+      },
+      "description": "text-4xl · 36/40 · -0.025em · font-normal"
+    },
+    "4xl/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 36,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 40
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -2.5
+      },
+      "description": "text-4xl · 36/40 · -0.025em · font-medium"
+    },
+    "4xl/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 36,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 40
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -2.5
+      },
+      "description": "text-4xl · 36/40 · -0.025em · font-semibold"
+    },
+    "5xl/regular": {
+      "fontFamily": "Geist",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 48,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 52
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -3
+      },
+      "description": "text-5xl · 48/52 · -0.03em · font-normal"
+    },
+    "5xl/medium": {
+      "fontFamily": "Geist",
+      "fontStyle": "Medium",
+      "fontWeight": 500,
+      "fontSize": 48,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 52
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -3
+      },
+      "description": "text-5xl · 48/52 · -0.03em · font-medium"
+    },
+    "5xl/semibold": {
+      "fontFamily": "Geist",
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSize": 48,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 52
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -3
+      },
+      "description": "text-5xl · 48/52 · -0.03em · font-semibold"
+    },
+    "mono/xs": {
+      "fontFamily": "Geist Mono",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "font-mono text-xs"
+    },
+    "mono/sm": {
+      "fontFamily": "Geist Mono",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "description": "font-mono text-sm"
+    }
+  },
+  "effect": {
+    "shadow-xs": {
+      "description": "shadow-xs · Fields and controls; Button outline",
+      "layers": [
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "radius": 2,
+          "spread": 0,
+          "color": "{shadow.xs.1}"
+        }
+      ]
+    },
+    "shadow-sm": {
+      "description": "shadow-sm · Low elevation (no component uses it yet)",
+      "layers": [
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "radius": 2,
+          "spread": 0,
+          "color": "{shadow.sm.1}"
+        },
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "radius": 3,
+          "spread": 0,
+          "color": "{shadow.sm.2}"
+        }
+      ]
+    },
+    "shadow-md": {
+      "description": "shadow-md · Floating surfaces: menus, popovers, select content, tooltip, toast",
+      "layers": [
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "radius": 12,
+          "spread": -2,
+          "color": "{shadow.md.1}"
+        },
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "radius": 4,
+          "spread": -2,
+          "color": "{shadow.md.2}"
+        }
+      ]
+    },
+    "shadow-lg": {
+      "description": "shadow-lg · Dialog",
+      "layers": [
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 16
+          },
+          "radius": 40,
+          "spread": -8,
+          "color": "{shadow.lg.1}"
+        },
+        {
+          "type": "DROP_SHADOW",
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "radius": 12,
+          "spread": -4,
+          "color": "{shadow.lg.2}"
+        }
+      ]
+    }
+  }
+}

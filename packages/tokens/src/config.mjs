@@ -117,3 +117,40 @@ export const TYPE_SCALE = [
   ['4xl', 36, 40, -0.025],
   ['5xl', 48, 52, -0.03],
 ];
+
+export const FONTS = { sans: 'Geist', mono: 'Geist Mono' };
+/** Weights the components use (font-normal, font-medium, font-semibold). */
+export const FONT_WEIGHTS = { regular: 400, medium: 500, semibold: 600 };
+
+/** Shadow color per theme as HSL channels; each shadow layer applies its own alpha. */
+export const SHADOW_COLOR = { light: [222, 20, 12], dark: [0, 0, 0] };
+/** Shadows only on what floats. Layers: [x, y, blur, spread, alpha], in px. */
+export const SHADOWS = {
+  xs: { use: 'Fields and controls; Button outline', layers: [[0, 1, 2, 0, 0.05]] },
+  sm: {
+    use: 'Low elevation (no component uses it yet)',
+    layers: [
+      [0, 1, 2, 0, 0.06],
+      [0, 1, 3, 0, 0.08],
+    ],
+  },
+  md: {
+    use: 'Floating surfaces: menus, popovers, select content, tooltip, toast',
+    layers: [
+      [0, 4, 12, -2, 0.1],
+      [0, 2, 4, -2, 0.06],
+    ],
+  },
+  lg: {
+    use: 'Dialog',
+    layers: [
+      [0, 16, 40, -8, 0.18],
+      [0, 4, 12, -4, 0.08],
+    ],
+  },
+};
+
+export const EASINGS = {
+  standard: 'cubic-bezier(0.2, 0, 0, 1)',
+  out: 'cubic-bezier(0.16, 1, 0.3, 1)',
+};
