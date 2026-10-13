@@ -2,13 +2,13 @@
 
 - **Status:** Aceito
 - **Data:** 2026-09-28
-- **Implementação:** em `feature/npm-publish`. Até ela entrar na `develop`, o `CLAUDE.md` continua dizendo "NOT as an npm package".
+- **Implementação:** `packages/ui` (build com tsdown em modo unbundle), em `feature/npm-publish`
 
 ## Contexto
 
 Hoje os componentes são distribuídos só como código-fonte pelo registry shadcn (`apps/www/registry/sanjou/ui/*.tsx` → `shadcn build`). Os tokens já são um pacote (`@sanjou/tokens`). O mantenedor decidiu publicar tokens **e** componentes na npm.
 
-> **Motivação: a confirmar pelo mantenedor.** O plano de publicação registra a decisão, mas não o motivo. Este ADR não reconstrói o motivo por suposição.
+Motivação (confirmada pelo mantenedor em 2026-10-06): oferecer as duas formas de consumo, copiar o código pelo registry ou instalar e atualizar por versão pela npm, e, por ser um projeto de estudo, praticar o empacotamento, o versionamento e a publicação de uma biblioteca React.
 
 ## Decisão
 
@@ -27,3 +27,4 @@ Hoje os componentes são distribuídos só como código-fonte pelo registry shad
 - Um teste de consistência garante que todo item `registry:ui` tem export no pacote, e vice-versa.
 - O `CLAUDE.md`, o `README.md` e o checklist de componente mudam quando a implementação entrar.
 - O consumidor do pacote precisa de Tailwind 4 configurado com `@source`.
+- Pacotes que precisam ser a mesma instância do app (`react-hook-form`, `sonner`) são `peerDependencies` opcionais; o resto (Radix, `cva`, `lucide-react`) é `dependencies`, com as mesmas faixas do `apps/www`.
