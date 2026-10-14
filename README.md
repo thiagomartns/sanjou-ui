@@ -158,7 +158,7 @@ pnpm add @fontsource-variable/geist @fontsource-variable/geist-mono
 1. Edit `packages/tokens/src/config.mjs`.
 2. `pnpm tokens` — the build fails if any contrast rule breaks.
 3. Commit the generated files together with the change. Releases are cut from the Conventional Commit types (`fix:` → patch, `feat:` → minor), so no extra release file is needed.
-4. Sync the Figma library from `packages/tokens/figma/`: update variables (`native/*.json`) and text/effect styles (`styles.json`) by name, so component bindings survive, then publish the library. Never edit variables or styles in Figma ([ADR 0013](docs/adr/0013-figma-mirrors-code-tokens-from-generator.md)).
+4. Sync the Figma library from `packages/tokens/figma/`: update variables (`native/*.json`) and text/effect styles (`styles.json`) by name, so component bindings survive. The library is published in the next release ([CONTRIBUTING.md](CONTRIBUTING.md#releases)). Never edit variables or styles in Figma ([ADR 0013](docs/adr/0013-figma-mirrors-code-tokens-from-generator.md)).
 
 ## Contributing
 

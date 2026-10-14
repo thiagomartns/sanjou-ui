@@ -36,6 +36,7 @@ Não escreva ADR para correções pontuais, detalhes de implementação ou plano
 | [0011](0011-site-and-registry-on-vercel.md)              | Site e registry na Vercel, com deploy de produção pela CLI na release | Aceito |
 | [0012](0012-npm-trusted-publishing.md)                   | Publicação na npm por trusted publishing (OIDC)                       | Aceito |
 | [0013](0013-figma-mirrors-code-tokens-from-generator.md) | Figma espelha o código; tokens só pelo gerador                        | Aceito |
+| [0014](0014-figma-library-release-follows-code.md)       | Release da biblioteca do Figma segue o release do código              | Aceito |
 
 ## Candidatas (decisões existentes sem motivo registrado)
 
