@@ -23,6 +23,7 @@ Para tirar o passo de editar `components.json` e encurtar os comandos, considera
 ## Consequências
 
 - O `add` roda com a versão do projeto, não com a testada. Num projeto sem shadcn nas dependências, o `npx` baixa a última versão. O `pnpm dlx` sempre baixa a última (testado em 2026-10-15), por isso as docs indicam `pnpm exec shadcn` para quem usa pnpm.
+- Quem já usa shadcn pula o `init`. As docs declaram o mínimo, shadcn CLI 3.0, primeira versão com registries por namespace: o 3.0.0 resolve `@sanjou/*` e o 2.10.0 não (testado em 2026-10-15).
 - `packages/ui/test/docs.test.mjs` continua exigindo uma única versão exata por doc, agora só no `init`.
 - Depois da inclusão no índice, o passo de `registries` sai do README, do site e do Storybook, e o teste de instalação limpa do `CONTRIBUTING.md` passa a cobrir o caminho sem configuração.
 - Se o índice deixar de atender, um CLI próprio volta a ser opção, com um novo ADR.

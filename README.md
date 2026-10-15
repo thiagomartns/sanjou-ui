@@ -79,6 +79,8 @@ npx shadcn@4.21.4 init --base radix --preset nova
 
 The docs pin the shadcn CLI for `init` to the version the Sanjou registry was last tested with. Newer versions usually work, but the CLI has changed its defaults before. After `init`, shadcn is a dependency of your project and `npx shadcn` runs that copy, so the `add` commands below need no version. With pnpm, use `pnpm exec shadcn`: `pnpm dlx` ignores the project copy and downloads the latest.
 
+Already using shadcn/ui? Skip `init`. Namespaced registries such as `@sanjou` need shadcn CLI 3.0 or later, so check `npx shadcn --version`. If shadcn is not a dependency of your project, `npx shadcn` downloads the latest version.
+
 Then add the registry:
 
 ```jsonc

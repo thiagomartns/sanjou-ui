@@ -103,6 +103,8 @@ export default function Home() {
             <span>
               Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix (
               <code className="font-mono">{shadcnInit} init --base radix --preset nova</code>).
+              Already using shadcn/ui? Skip <code className="font-mono">init</code>: the registry
+              needs shadcn CLI 3.0 or later.
             </span>
           </li>
           <li className="grid gap-2">
@@ -112,7 +114,13 @@ export default function Home() {
             <Code>{registriesSnippet}</Code>
           </li>
           <li className="grid gap-2">
-            <span>Install the theme first, then any component:</span>
+            <span>
+              Install the theme first, then any component. After{' '}
+              <code className="font-mono">init</code>, <code className="font-mono">{shadcn}</code>{' '}
+              runs the version installed in your project (with pnpm, use{' '}
+              <code className="font-mono">pnpm exec shadcn</code>;{' '}
+              <code className="font-mono">pnpm dlx</code> downloads the latest):
+            </span>
             <Code>{`${shadcn} add @sanjou/theme\n${shadcn} add --overwrite @sanjou/button @sanjou/input @sanjou/label`}</Code>
           </li>
           <li className="grid gap-2">
