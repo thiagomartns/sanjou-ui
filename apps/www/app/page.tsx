@@ -3,7 +3,7 @@ import { CircleCheck, Copy, MoreHorizontal, Search, Trash2 } from 'lucide-react'
 import { Code } from '@/components/site/code';
 import { FormDemo } from '@/components/site/form-demo';
 import { Preview } from '@/components/site/preview';
-import { shadcn } from '@/components/site/shadcn';
+import { shadcn, shadcnInit } from '@/components/site/shadcn';
 import { ThemeToggle } from '@/components/site/theme-toggle';
 import { ToastDemo } from '@/components/site/toast-demo';
 import { Alert, AlertDescription, AlertTitle } from '@/registry/sanjou/ui/alert';
@@ -102,7 +102,7 @@ export default function Home() {
           <li className="grid gap-2">
             <span>
               Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix (
-              <code className="font-mono">{shadcn} init --base radix --preset nova</code>).
+              <code className="font-mono">{shadcnInit} init --base radix --preset nova</code>).
             </span>
           </li>
           <li className="grid gap-2">
