@@ -1,6 +1,6 @@
 {
   "name": "@sanjou/tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sanjou UI design tokens: Tailwind CSS 4 theme (OKLCH, light + dark), W3C DTCG JSON and Figma variables.",
   "license": "MIT",
   "repository": {

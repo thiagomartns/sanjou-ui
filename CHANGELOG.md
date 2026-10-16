@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/thiagomartns/sanjou-ui/compare/v0.1.0...v0.2.0) (2026-10-16)
+
+
+### Features
+
+* add Table and Avatar ([#35](https://github.com/thiagomartns/sanjou-ui/issues/35)) ([a8be28e](https://github.com/thiagomartns/sanjou-ui/commit/a8be28eaa267f71279408fdf4174af0f6c12941a))
+* **tokens:** emit Figma text and effect styles ([#34](https://github.com/thiagomartns/sanjou-ui/issues/34)) ([a2c47dc](https://github.com/thiagomartns/sanjou-ui/commit/a2c47dcd4af47b3b73704f5c02d81c6001628863))
+
 ## 0.1.0 (2026-10-13)
 
 
