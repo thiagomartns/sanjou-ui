@@ -37,7 +37,7 @@ Não escreva ADR para correções pontuais, detalhes de implementação ou plano
 | [0012](0012-npm-trusted-publishing.md)                   | Publicação na npm por trusted publishing (OIDC)                          | Aceito |
 | [0013](0013-figma-mirrors-code-tokens-from-generator.md) | Figma espelha o código; tokens só pelo gerador                           | Aceito |
 | [0014](0014-figma-library-release-follows-code.md)       | Release da biblioteca do Figma segue o release do código                 | Aceito |
-| [0016](0016-shadcn-registry-index-over-own-cli.md)       | Versão do shadcn fixa só no `init`; índice oficial em vez de CLI próprio | Aceito |
+| [0015](0015-shadcn-registry-index-over-own-cli.md)       | Versão do shadcn fixa só no `init`; índice oficial em vez de CLI próprio | Aceito |
 
 ## Candidatas (decisões existentes sem motivo registrado)
 

@@ -1,4 +1,4 @@
-# 0016 — Versão do shadcn fixa só no `init`, e o índice oficial em vez de um CLI próprio
+# 0015 — Versão do shadcn fixa só no `init`, e o índice oficial em vez de um CLI próprio
 
 - **Status:** Aceito
 - **Data:** 2026-10-15
