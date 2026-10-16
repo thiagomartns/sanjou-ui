@@ -18,8 +18,10 @@ A quiet design system for dense product interfaces. It is built on Radix primiti
 Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radix:
 
 ```bash
-npx shadcn@latest init --base radix
+npx shadcn@4.21.4 init --base radix --preset nova
 ```
+
+Already using shadcn/ui? Skip `init`. Namespaced registries such as `@sanjou` need shadcn CLI 3.0 or later.
 
 Add the registry to `components.json`:
 
@@ -31,14 +33,14 @@ Add the registry to `components.json`:
 }
 ```
 
-Add the theme, then the components you need:
+Add the theme, then the components you need. After `init`, `npx shadcn` runs the version installed in your project (with pnpm, `pnpm exec shadcn`; `pnpm dlx` downloads the latest):
 
 ```bash
-npx shadcn@latest add @sanjou/theme
-npx shadcn@latest add --overwrite @sanjou/button @sanjou/input @sanjou/label
+npx shadcn add @sanjou/theme
+npx shadcn add --overwrite @sanjou/button @sanjou/input @sanjou/label
 ```
 
-`init` creates its own `button.tsx`; `--overwrite` replaces it with the Sanjou one.
+`--overwrite` replaces any shadcn component of the same name already in your project. The code is yours from then on: to get a later fix, run `add --overwrite` again and review the diff. For updates by version instead, use the `@sanjou/ui` npm package.
 
 The theme item writes the tokens into your `globals.css`. To use the tokens without the CLI, install `@sanjou/tokens` and import its stylesheet after Tailwind:
 
@@ -47,7 +49,7 @@ The theme item writes the tokens into your `globals.css`. To use the tokens with
 @import '@sanjou/tokens/sanjou.css';
 ```
 
-The tokens expect Geist. In Next.js, load it with `next/font/google` and the variables `--font-geist-sans` and `--font-geist-mono`.
+The tokens expect Geist. In Next.js, load it with `next/font/google` and the variables `--font-geist-sans` and `--font-geist-mono`. Elsewhere, install `@fontsource-variable/geist` and `@fontsource-variable/geist-mono` and set those variables to `'Geist Variable'` and `'Geist Mono Variable'`.
 
 ## How this Storybook is organized
 

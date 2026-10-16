@@ -11,6 +11,7 @@ import {
   buildDtcg,
   buildFavicon,
   buildFigma,
+  buildFigmaStyles,
   buildLogo,
   buildPalette,
   buildRegistryTheme,
@@ -36,6 +37,7 @@ for (const format of ['native', 'plugin-hex'])
     buildFigma(palette, format === 'native' ? 'native' : 'hex'),
   ))
     outputs[join(pkg, 'figma', format, file)] = json(doc);
+outputs[join(pkg, 'figma', 'styles.json')] = json(buildFigmaStyles());
 
 // Brand mark: static SVGs for the README (light + dark) and the site/Storybook favicon.
 outputs[join(root, '.github', 'assets', 'sanjou-mark.svg')] = buildLogo(palette, 'light');

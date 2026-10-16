@@ -58,9 +58,16 @@ Releases are automated with [release-please](https://github.com/googleapis/relea
 
 1. A maintainer opens the promotion PR `develop` → `main` and merges it with a merge commit.
 2. release-please opens (or updates) the Release PR against `main`, with the version bump and the `CHANGELOG.md` entry. Review both.
-3. Merging the Release PR tags `vX.Y.Z`, creates the GitHub Release and publishes both packages to npm with provenance.
+3. Merging the Release PR tags `vX.Y.Z`, creates the GitHub Release and publishes both packages to npm with provenance. Publishing uses npm trusted publishing (OIDC), with no npm token in the repository; see [ADR 0012](docs/adr/0012-npm-trusted-publishing.md).
 4. The GitHub Release deploys the docs site and registry (Vercel) and the Storybook (GitHub Pages), and opens the back-merge PR `main` → `develop`.
 5. A maintainer merges the back-merge PR with a merge commit.
+6. A maintainer releases the Figma library (`Sanjou UI — Library`), the last step, after the npm publish:
+   - sync variables and styles from `packages/tokens/figma/`, if they changed in this release;
+   - set the `Docs/version` variable to `X.Y.Z` (the cover and the section headers show it);
+   - publish the library with the description `vX.Y.Z — <summary>` and the link to the GitHub Release;
+   - save a named version `vX.Y.Z` in the file's version history.
+
+The Figma file may change between releases, but it is only published in a release. A hotfix publishes it with its patch version. See [ADR 0014](docs/adr/0014-figma-library-release-follows-code.md).
 
 Production only deploys on a release. Feature branches never get a version. Moving to `1.0.0` is an explicit decision, made with `release-as` in `release-please-config.json`.
 
@@ -70,8 +77,12 @@ A version published to npm can never be reused. A bad release is fixed with `npm
 
 1. Branch `hotfix/<name>` off `main`.
 2. Open a PR into `main` titled `fix: …` and squash-merge it. release-please updates the Release PR with a patch version.
-3. Merge the Release PR: tag, npm publish and deploy, as in a normal release.
+3. Merge the Release PR: tag, npm publish, deploy and the Figma library, as in a normal release.
 4. The automatic back-merge PR brings the fix to `develop`. Merge it with a merge commit.
+
+## The shadcn CLI version in the docs
+
+README, the docs site (`apps/www/components/site/shadcn.ts`) and the Storybook Introduction pin one shadcn CLI version for `init` only, so the install steps do not break when the CLI changes its defaults. The `add` commands use plain `npx shadcn`, which runs the copy `init` installed in the project ([ADR 0015](docs/adr/0015-shadcn-registry-index-over-own-cli.md)). Bump it only after a clean install passes with the new version: a fresh Next.js app, `init --base radix --preset nova`, `registries` pointing to a local `pnpm --filter www dev`, `add --overwrite` of every item in `apps/www/registry.json`, then `tsc --noEmit`, `next build` and a look at both themes. `packages/ui/test/docs.test.mjs` fails if the three places disagree.
 
 ## Decisions and AI artifacts
 
