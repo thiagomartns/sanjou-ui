@@ -21,6 +21,8 @@ Start from a Next.js + Tailwind CSS 4 project with shadcn/ui initialized on Radi
 npx shadcn@4.21.4 init --base radix --preset nova
 ```
 
+Already using shadcn/ui? Skip `init`. Namespaced registries such as `@sanjou` need shadcn CLI 3.0 or later.
+
 Add the registry to `components.json`:
 
 ```jsonc
@@ -31,11 +33,11 @@ Add the registry to `components.json`:
 }
 ```
 
-Add the theme, then the components you need:
+Add the theme, then the components you need. After `init`, `npx shadcn` runs the version installed in your project (with pnpm, `pnpm exec shadcn`; `pnpm dlx` downloads the latest):
 
 ```bash
-npx shadcn@4.21.4 add @sanjou/theme
-npx shadcn@4.21.4 add --overwrite @sanjou/button @sanjou/input @sanjou/label
+npx shadcn add @sanjou/theme
+npx shadcn add --overwrite @sanjou/button @sanjou/input @sanjou/label
 ```
 
 `--overwrite` replaces any shadcn component of the same name already in your project. The code is yours from then on: to get a later fix, run `add --overwrite` again and review the diff. For updates by version instead, use the `@sanjou/ui` npm package.

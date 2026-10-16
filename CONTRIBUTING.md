@@ -82,7 +82,7 @@ A version published to npm can never be reused. A bad release is fixed with `npm
 
 ## The shadcn CLI version in the docs
 
-README, the docs site (`apps/www/components/site/shadcn.ts`) and the Storybook Introduction pin one shadcn CLI version, so the install steps do not break when the CLI changes its defaults. Bump it only after a clean install passes with the new version: a fresh Next.js app, `init --base radix --preset nova`, `registries` pointing to a local `pnpm --filter www dev`, `add --overwrite` of every item in `apps/www/registry.json`, then `tsc --noEmit`, `next build` and a look at both themes. `packages/ui/test/docs.test.mjs` fails if the three places disagree.
+README, the docs site (`apps/www/components/site/shadcn.ts`) and the Storybook Introduction pin one shadcn CLI version for `init` only, so the install steps do not break when the CLI changes its defaults. The `add` commands use plain `npx shadcn`, which runs the copy `init` installed in the project ([ADR 0015](docs/adr/0015-shadcn-registry-index-over-own-cli.md)). Bump it only after a clean install passes with the new version: a fresh Next.js app, `init --base radix --preset nova`, `registries` pointing to a local `pnpm --filter www dev`, `add --overwrite` of every item in `apps/www/registry.json`, then `tsc --noEmit`, `next build` and a look at both themes. `packages/ui/test/docs.test.mjs` fails if the three places disagree.
 
 ## Decisions and AI artifacts
 

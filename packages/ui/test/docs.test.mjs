@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-// The install steps pin one shadcn CLI version (CONTRIBUTING.md). It is written in three places,
+// The install steps pin one shadcn CLI version for `init` (CONTRIBUTING.md). It is written in three places,
 // so a bump that misses one would leave the README, the site and Storybook telling different stories.
 
 const repo = new URL('../../../', import.meta.url);
